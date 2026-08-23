@@ -58,6 +58,27 @@ export interface RouteStation {
   outpostNotes: string;
 }
 
+export interface CargoItem {
+  id: string;
+  name: string;
+  category: 'Metals' | 'Electronics' | 'Fuel/Chemicals' | 'Relic';
+  baseScrapValue: number;
+  weightKg: number;
+  rarity: 'Common' | 'Rare' | 'Epic' | 'Legendary';
+  bestOutpostToSell: string;
+  bonusMultiplier: number;
+}
+
+export interface ClassRole {
+  id: string;
+  name: string;
+  roleType: 'Boiler/Engineer' | 'Gunner/Heavy' | 'Scout/Looter' | 'Medic/Support';
+  keyAbility: string;
+  passiveBonus: string;
+  recommendedWeapons: string[];
+  playstyle: string;
+}
+
 // -------------------------------------------------------------
 // DATASETS
 // -------------------------------------------------------------
@@ -269,5 +290,78 @@ export const ROUTE_STATIONS: RouteStation[] = [
     fuelDropChance: '25%',
     keyLoot: 'Class S Scrip Chest, Golden Turbine, Endgame Trophy',
     outpostNotes: 'Final extraction station. Boss waves spawn continuously until train departs.'
+  }
+];
+
+export const CARGO_ITEMS: CargoItem[] = [
+  {
+    id: 'refined-iron-ingot',
+    name: 'Refined Iron Ingot Crate',
+    category: 'Metals',
+    baseScrapValue: 150,
+    weightKg: 25,
+    rarity: 'Common',
+    bestOutpostToSell: 'Outpost 4: Frostline Ravine',
+    bonusMultiplier: 1.25
+  },
+  {
+    id: 'battery-core-high-cap',
+    name: 'High-Capacity Lithium Battery Core',
+    category: 'Electronics',
+    baseScrapValue: 450,
+    weightKg: 10,
+    rarity: 'Rare',
+    bestOutpostToSell: 'Outpost 8: Desolation Yard',
+    bonusMultiplier: 1.6
+  },
+  {
+    id: 'high-octane-fuel-canister',
+    name: 'High-Octane Diesel Canister',
+    category: 'Fuel/Chemicals',
+    baseScrapValue: 300,
+    weightKg: 15,
+    rarity: 'Rare',
+    bestOutpostToSell: 'Outpost 10: Terminal Citadel',
+    bonusMultiplier: 2.0
+  },
+  {
+    id: 'golden-turbine-core',
+    name: 'Pre-War Golden Turbine Relic',
+    category: 'Relic',
+    baseScrapValue: 1500,
+    weightKg: 40,
+    rarity: 'Legendary',
+    bestOutpostToSell: 'Outpost 10: Terminal Citadel',
+    bonusMultiplier: 2.5
+  }
+];
+
+export const CLASS_ROLES: ClassRole[] = [
+  {
+    id: 'boiler-engineer',
+    name: 'Train Engineer / Stoker',
+    roleType: 'Boiler/Engineer',
+    keyAbility: 'Overcharge Pressure Valve (+30% train speed for 15s)',
+    passiveBonus: '-20% Boiler Fuel Drain & +50% Repair Hammer speed',
+    recommendedWeapons: ['Trench Auto-Shotgun Mk.II', 'Pyro-Sprayer Flamethrower'],
+    playstyle: 'Manages engine temperature, keeps boiler stoked, repairs door breaches.'
+  },
+  {
+    id: 'heavy-gunner',
+    name: 'Mounted Turret Specialist',
+    roleType: 'Gunner/Heavy',
+    keyAbility: 'Suppressive Overdrive (-50% mounted minigun overheating)',
+    passiveBonus: '+25% Mounted Weapon Damage & +150 Max Ammo Carry',
+    recommendedWeapons: ['Mounted Armored Minigun', '7.62mm Marksman Rifle'],
+    playstyle: 'Mans train roof Gatling guns, eliminates Armored Chargers and airborne leapers.'
+  },
+  {
+    id: 'scout-looter',
+    name: 'Scavenger & Runner',
+    roleType: 'Scout/Looter',
+    keyAbility: 'Sprint Emergency Dash (3x sprint speed for 5s)',
+    passiveBonus: '+40kg Cargo Carry Weight & 2x Search Speed at Outposts',
+    recommendedWeapons: ['Sub-Machine Gun 9mm', 'Titanium Sledgehammer'],
+    playstyle: 'Disembarks at outposts, loots scrap chests, brings fuel drums back to train.'
   }
 ];

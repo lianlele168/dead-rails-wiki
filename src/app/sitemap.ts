@@ -12,6 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/zombies-guide',
     '/routes-map',
     '/beginner-guide',
+    '/cargo-trade-calculator',
+    '/class-roles',
+    '/night-survival-simulator',
     '/about',
     '/privacy-policy',
   ];
