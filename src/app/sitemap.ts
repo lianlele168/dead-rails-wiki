@@ -15,7 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/cargo-trade-calculator',
     '/class-roles',
     '/night-survival-simulator',
-    '/about',
   ];
 
   return routes.map((route) => ({
