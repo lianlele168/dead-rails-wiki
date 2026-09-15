@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/class-roles',
     '/night-survival-simulator',
     '/about',
-    '/privacy-policy',
   ];
 
   return routes.map((route) => ({

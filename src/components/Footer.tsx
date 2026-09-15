@@ -36,6 +36,7 @@ export default function Footer() {
           <ul className="space-y-2 font-mono text-xs">
             <li><Link href="/about" className="hover:text-amber-400 transition-colors">About Us</Link></li>
             <li><Link href="/privacy-policy" className="hover:text-amber-400 transition-colors">Privacy Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-amber-400 transition-colors">Terms of Use</Link></li>
             <li><Link href="/beginner-guide" className="hover:text-amber-400 transition-colors">Beginner SOP Guide</Link></li>
             <li>
               <a href="https://robloxwikihub.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline inline-flex items-center gap-1">
