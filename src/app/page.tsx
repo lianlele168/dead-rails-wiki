@@ -1,9 +1,11 @@
 import React from 'react';
 import Metadata from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FuelCalculator from '@/components/FuelCalculator';
+import AuthorCard from '@/components/AuthorCard';
 import { REDEEM_CODES, WEAPON_TIER_LIST, ZOMBIE_ENTITIES, ROUTE_STATIONS } from '@/data/wikiData';
 import { Flame, Crosshair, Gift, Shield, Database, MapPin, ArrowRight, CheckCircle2, Zap, Award } from 'lucide-react';
 
@@ -119,6 +121,39 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* E-E-A-T AUTHOR VERIFICATION */}
+        <AuthorCard />
+
+        {/* GAMEPLAY VISUAL ASSETS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+          <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-4 flex flex-col items-center">
+            <Image
+              src="/images/dead-rails-hero.webp"
+              alt="Dead Rails Armored Train in Zombie Wasteland"
+              width={640}
+              height={360}
+              className="rounded-xl object-cover w-full h-52 border border-slate-800"
+              priority
+            />
+            <p className="text-xs text-slate-400 mt-2 text-center font-mono">
+              Figure 1: Official RCM Games Dead Rails locomotive navigating the wasteland railway.
+            </p>
+          </div>
+
+          <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-4 flex flex-col items-center">
+            <Image
+              src="/images/dead-rails-icon.webp"
+              alt="Dead Rails Game Icon and Threat Indicator"
+              width={640}
+              height={360}
+              className="rounded-xl object-contain w-full h-52 bg-black/50 border border-slate-800"
+            />
+            <p className="text-xs text-slate-400 mt-2 text-center font-mono">
+              Figure 2: Official Dead Rails Survival Icon — Wasteland danger rating & Outpost emblems.
+            </p>
+          </div>
+        </div>
 
         {/* FUEL CALCULATOR FEATURE */}
         <section className="space-y-4">
