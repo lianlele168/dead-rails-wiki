@@ -10,7 +10,7 @@ interface AuthorCardProps {
 }
 
 export default function AuthorCard({
-  authorName = "Roblox Wiki Hub Research Desk"Cinders" Vance',
+  authorName = 'Marcus "Cinders" Vance',
   role = 'Lead Locomotive Engineer & Zombie Horde Specialist',
   experience = '350+ Hours In-Game • 500+ Outpost Runs',
   patchVersion = 'RCM Patch v2.14 Verified',
