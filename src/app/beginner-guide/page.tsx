@@ -7,7 +7,7 @@ import AuthorCard from '@/components/AuthorCard';
 import { ShieldCheck, Flame, Crosshair, ArrowRight, CheckCircle2, AlertTriangle, Hammer, HelpCircle } from 'lucide-react';
 
 export const metadata = {
-  title: 'Dead Rails Beginner Guide | Day 1 to 10 Train Survival SOP (September 2026)',
+  title: 'Dead Rails Beginner Guide | Day 1 to 10 Train Survival SOP ',
   description: 'Complete beginner SOP guide for Roblox Dead Rails. Master boiler steam heat management, fuel preservation, cowcatcher ramming tactics, and high-tier scrap salvage.',
 };
 
@@ -43,7 +43,7 @@ export default function BeginnerGuidePage() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
-              dateModified: '2026-09-15',
+
               author: {
                 '@type': 'Person',
                 name: 'Garrison "Cinders" Vance',

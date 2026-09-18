@@ -25,7 +25,7 @@ export default function CodesPage() {
             <Gift className="w-3.5 h-3.5" /> Verified Working Codes
           </div>
           <h1 className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-slate-100 uppercase">
-            Roblox Dead Rails Redeem Codes (August 2026)
+            Roblox Dead Rails Redeem Codes 
           </h1>
           <p className="text-slate-400 text-sm max-w-3xl">
             Claim free Scrap, Scrip, Coal fuel stacks, and Shotgun ammo crates. Codes are tested daily by our automated validation system.

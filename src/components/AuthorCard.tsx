@@ -14,7 +14,7 @@ export default function AuthorCard({
   role = 'Lead Locomotive Engineer & Zombie Horde Specialist',
   experience = '350+ Hours In-Game • 500+ Outpost Runs',
   patchVersion = 'RCM Patch v2.14 Verified',
-  lastUpdated = 'September 2026',
+  lastUpdated = '',
   editorialNote = 'All boiler fuel burn rates, cowcatcher ramming damage calculations, and zombie wave spawn triggers are tested and verified across live multiplayer runs.',
 }: AuthorCardProps) {
   return (
@@ -41,9 +41,7 @@ export default function AuthorCard({
           <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/10 text-amber-300 border border-amber-500/20">
             ⚡ {patchVersion}
           </span>
-          <span className="text-xs text-slate-400">
-            Updated: <strong className="text-slate-200">{lastUpdated}</strong>
-          </span>
+          
         </div>
       </div>
 

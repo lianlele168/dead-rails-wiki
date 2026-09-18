@@ -217,7 +217,7 @@ export default function HomePage() {
               </div>
               <div>
                 <h2 className="text-xl font-bold font-mono text-slate-100 uppercase">Verified Redeem Codes</h2>
-                <p className="text-xs text-slate-400 font-sans">Updated August 2026. Claim free Scrap, Scrip, and Coal.</p>
+                <p className="text-xs text-slate-400 font-sans">Updated . Claim free Scrap, Scrip, and Coal.</p>
               </div>
             </div>
             <Link href="/codes" className="px-4 py-2 bg-emerald-500/20 text-emerald-300 rounded-xl text-xs font-mono hover:bg-emerald-500/30 border border-emerald-500/40 transition-colors">

@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy &amp; Trust Disclosures
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 font-sans">
-            Last Updated: 2026 • Compliant with COPPA, GDPR, and Google AdSense
+            Last Updated • Compliant with COPPA, GDPR, and Google AdSense
           </p>
         </div>
 

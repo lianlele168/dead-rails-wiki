@@ -37,7 +37,7 @@ export default function TermsPage() {
             Terms of Use &amp; Service Guidelines
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 font-sans">
-            Last Updated: 2026 • Unofficial strategy companion for Dead Rails
+            Last Updated • Unofficial strategy companion for Dead Rails
           </p>
         </div>
 

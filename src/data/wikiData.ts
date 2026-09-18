@@ -86,11 +86,11 @@ export interface ClassRole {
 export const font_mono = "font-mono";
 
 export const REDEEM_CODES: RedeemCode[] = [
-  { code: 'RAILRUN2026', reward: '500 Scrap + 2x Oil Drum Fuel', status: 'ACTIVE', addedDate: '2026-08-20' },
-  { code: 'ZOMBIEEXPRESS', reward: 'Heavy Engine Booster + 250 Scrip', status: 'ACTIVE', addedDate: '2026-08-15' },
-  { code: 'BOILERHEAT', reward: '1,000 Coal Fuel Units + Repair Hammer', status: 'ACTIVE', addedDate: '2026-08-10' },
-  { code: 'DEADOUTPOST', reward: 'Shotgun Ammo Crate + 300 Scrap', status: 'ACTIVE', addedDate: '2026-08-01' },
-  { code: 'ALPHACOMMUNITY', reward: '500 Scrap + 1x Medic Kit', status: 'EXPIRED', addedDate: '2026-06-01' },
+  { code: 'RAILRUN2026', reward: '500 Scrap + 2x Oil Drum Fuel', status: 'ACTIVE', addedDate: '' },
+  { code: 'ZOMBIEEXPRESS', reward: 'Heavy Engine Booster + 250 Scrip', status: 'ACTIVE', addedDate: '' },
+  { code: 'BOILERHEAT', reward: '1,000 Coal Fuel Units + Repair Hammer', status: 'ACTIVE', addedDate: '' },
+  { code: 'DEADOUTPOST', reward: 'Shotgun Ammo Crate + 300 Scrap', status: 'ACTIVE', addedDate: '' },
+  { code: 'ALPHACOMMUNITY', reward: '500 Scrap + 1x Medic Kit', status: 'EXPIRED', addedDate: '' },
 ];
 
 export const WEAPON_TIER_LIST: WeaponItem[] = [
