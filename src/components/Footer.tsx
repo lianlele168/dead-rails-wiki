@@ -49,6 +49,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto border-t border-slate-900 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
         <p>© 2026 Dead Rails Wiki. All rights reserved.</p>
+        <p>Content AI-assisted, human-reviewed · Data sources cited on page · Contact: lianlele168@gmail.com</p>
         <p>Built with Next.js 15 & Tailwind CSS</p>
       </div>
     </footer>

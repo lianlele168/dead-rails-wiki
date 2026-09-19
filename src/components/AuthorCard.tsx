@@ -10,9 +10,9 @@ interface AuthorCardProps {
 }
 
 export default function AuthorCard({
-  authorName = 'Marcus "Cinders" Vance',
-  role = 'Dead Rails Wiki Editor & Guide Author',
-  experience = 'Data verified against deadrails.fandom.com, TheGamer & community tier lists',
+  authorName = 'Hlele',
+  role = 'Editor',
+  experience = 'AI-assisted research, human-reviewed',
   patchVersion = `Sources last checked ${'2026-09-19'}`,
   lastUpdated = '',
   editorialNote = 'Every enemy, location and mechanic on this page comes from verified public sources (Dead Rails Fandom Wiki, TheGamer, Destructoid, Beebom). Fields we could not confirm are marked "not documented" — we never invent stats.',
