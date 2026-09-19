@@ -11,11 +11,11 @@ interface AuthorCardProps {
 
 export default function AuthorCard({
   authorName = 'Marcus "Cinders" Vance',
-  role = 'Lead Locomotive Engineer & Zombie Horde Specialist',
-  experience = '350+ Hours In-Game • 500+ Outpost Runs',
-  patchVersion = 'RCM Patch v2.14 Verified',
+  role = 'Dead Rails Wiki Editor & Guide Author',
+  experience = 'Data verified against deadrails.fandom.com, TheGamer & community tier lists',
+  patchVersion = `Sources last checked ${'2026-09-19'}`,
   lastUpdated = '',
-  editorialNote = 'All boiler fuel burn rates, cowcatcher ramming damage calculations, and zombie wave spawn triggers are tested and verified across live multiplayer runs.',
+  editorialNote = 'Every enemy, location and mechanic on this page comes from verified public sources (Dead Rails Fandom Wiki, TheGamer, Destructoid, Beebom). Fields we could not confirm are marked "not documented" — we never invent stats.',
 }: AuthorCardProps) {
   return (
     <div className="w-full rounded-2xl bg-slate-900/80 border border-amber-500/20 p-4 sm:p-5 backdrop-blur-md my-6 shadow-xl font-sans">

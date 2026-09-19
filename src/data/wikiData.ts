@@ -1,45 +1,55 @@
-export interface FuelCalcParams {
-  distanceKm: number;
-  trainSpeedKmh: number;
-  cargoWeightTons: number;
-  engineLevel: number; // 1 to 4
-  armorLevel: number; // 0 to 3
+// -------------------------------------------------------------
+// Dead Rails Wiki — Verified Data
+// Source of truth: tier1-rescue/real-data/deadrails.md
+// Verified against: deadrails.fandom.com, TheGamer, Beebom,
+// Destructoid, Namu wiki (retrieved 2026-09-19).
+// Any field that could not be confirmed is "not documented".
+// -------------------------------------------------------------
+
+export const DATA_VERIFIED_DATE = '2026-09-19';
+export const DATA_SOURCES = [
+  { name: 'Dead Rails Fandom Wiki', url: 'https://deadrails.fandom.com' },
+  { name: 'TheGamer — Every Enemy In Dead Rails', url: 'https://www.thegamer.com/roblox-dead-rails-enemies-guide' },
+  { name: 'Destructoid — Dead Rails Classes Tier List', url: 'https://www.destructoid.com/dead-rails-classes-guide-tier-list' },
+];
+
+export interface EnemyEntity {
+  id: string;
+  name: string;
+  threatLevel: 'Class S' | 'Class A' | 'Class B' | 'Class C';
+  hp: string;
+  speed: string;
+  danger: string;
+  weakness: string;
+  counterTactics: string;
+}
+
+export interface UniqueLocation {
+  name: string;
+  distanceRangeKm: string;
+  dangerRating: 'Low' | 'Moderate' | 'High' | 'EXTREME';
+  keyEnemies: string;
+  keyLoot: string;
+  locationNotes: string;
 }
 
 export interface WeaponItem {
   id: string;
   name: string;
-  category: 'Shotgun' | 'Rifle' | 'SMG' | 'Melee' | 'Mounted' | 'Special';
+  category: 'Shotgun' | 'Rifle' | 'Melee';
   tier: 'S+' | 'S' | 'A' | 'B';
-  dps: number;
-  damage: number;
-  fireRate: number; // RPM
-  ammoType: '12 Gauge' | '7.62mm' | '9mm' | 'Fuel Tank' | 'Melee' | '5.56mm';
-  magSize: number;
+  stats: string;
   description: string;
 }
 
-export interface TrainUpgrade {
+export interface GameClass {
   id: string;
   name: string;
-  category: 'Engine' | 'Armor' | 'Weaponry' | 'Utility';
-  tierLevel: number;
-  costScrap: number;
-  effect: string;
-  speedModifierPercent: number;
-  weightAddTons: number;
-  recommendation: 'Must Have' | 'High ROI' | 'Situational' | 'Late Game';
-}
-
-export interface ZombieEntity {
-  id: string;
-  name: string;
-  threatLevel: 'Class S' | 'Class A' | 'Class B' | 'Class C';
-  hp: number;
-  speed: string;
-  danger: string;
-  weakness: string;
-  counterTactics: string;
+  category: 'Combat' | 'Support' | 'Utility';
+  keyAbility: string;
+  passiveBonus: string;
+  tierNote: string;
+  playstyle: string;
 }
 
 export interface RedeemCode {
@@ -49,319 +59,301 @@ export interface RedeemCode {
   addedDate: string;
 }
 
-export interface RouteStation {
-  name: string;
-  distanceFromStartKm: number;
-  dangerRating: 'Low' | 'Moderate' | 'High' | 'EXTREME';
-  fuelDropChance: string;
-  keyLoot: string;
-  outpostNotes: string;
-}
-
-export interface CargoItem {
-  id: string;
-  name: string;
-  category: 'Metals' | 'Electronics' | 'Fuel/Chemicals' | 'Relic';
-  baseScrapValue: number;
-  weightKg: number;
-  rarity: 'Common' | 'Rare' | 'Epic' | 'Legendary';
-  bestOutpostToSell: string;
-  bonusMultiplier: number;
-}
-
-export interface ClassRole {
-  id: string;
-  name: string;
-  roleType: 'Boiler/Engineer' | 'Gunner/Heavy' | 'Scout/Looter' | 'Medic/Support';
-  keyAbility: string;
-  passiveBonus: string;
-  recommendedWeapons: string[];
-  playstyle: string;
-}
+export const REDEEM_CODES: RedeemCode[] = [];
 
 // -------------------------------------------------------------
-// DATASETS
+// ENEMIES (verified list — exact HP values: not documented,
+// pending per-entity check on deadrails.fandom.com)
 // -------------------------------------------------------------
 
-export const font_mono = "font-mono";
-
-export const REDEEM_CODES: RedeemCode[] = [
-  { code: 'RAILRUN2026', reward: '500 Scrap + 2x Oil Drum Fuel', status: 'ACTIVE', addedDate: '' },
-  { code: 'ZOMBIEEXPRESS', reward: 'Heavy Engine Booster + 250 Scrip', status: 'ACTIVE', addedDate: '' },
-  { code: 'BOILERHEAT', reward: '1,000 Coal Fuel Units + Repair Hammer', status: 'ACTIVE', addedDate: '' },
-  { code: 'DEADOUTPOST', reward: 'Shotgun Ammo Crate + 300 Scrap', status: 'ACTIVE', addedDate: '' },
-  { code: 'ALPHACOMMUNITY', reward: '500 Scrap + 1x Medic Kit', status: 'EXPIRED', addedDate: '' },
+export const ENEMIES: EnemyEntity[] = [
+  {
+    id: 'normal-zombie',
+    name: 'Normal Zombie',
+    threatLevel: 'Class C',
+    hp: 'not documented (low HP)',
+    speed: 'Slow',
+    danger: 'Most common enemy. Only spawns around houses and towns. Banker Zombie variant drops the bank vault code when killed.',
+    weakness: 'Any firearm works; melee also viable.',
+    counterTactics: 'Shoot from range, or back away while meleeing. Check banks for the Banker Zombie before looting the vault.'
+  },
+  {
+    id: 'runner-zombie',
+    name: 'Runner Zombie',
+    threatLevel: 'Class B',
+    hp: 'not documented (low HP)',
+    speed: 'Fast — can catch up to players',
+    danger: 'Spawns around players and the train on regular nights and will chase you down.',
+    weakness: 'Firearms only — melee is unreliable against moving targets.',
+    counterTactics: 'Use guns. A shotgun at close range one-shots them.'
+  },
+  {
+    id: 'zombie-soldier',
+    name: 'Zombie Soldier',
+    threatLevel: 'Class B',
+    hp: 'not documented (low HP, same as normal zombies)',
+    speed: 'Runner-level speed',
+    danger: 'Damage depends on the firearm they carry — they shoot back.',
+    weakness: 'Exposed while reloading.',
+    counterTactics: 'Engage with a rifle from long distance before they close in.'
+  },
+  {
+    id: 'captain-prescott',
+    name: 'Captain Prescott',
+    threatLevel: 'Class A',
+    hp: 'not documented (low HP, same as normal zombies)',
+    speed: 'Runner-level speed',
+    danger: 'Zombie Soldier leader. Only spawns around Fort Constitution.',
+    weakness: 'No special defenses documented.',
+    counterTactics: 'Kill with a rifle from range. His corpse sells to the Sheriff for a high price.'
+  },
+  {
+    id: 'vampire',
+    name: 'Vampire',
+    threatLevel: 'Class A',
+    hp: 'not documented (higher than zombies)',
+    speed: 'Fast — teleports to close distance',
+    danger: 'Blood Moon and castle-area exclusive. Vanishes at daytime (corpse remains). Deals slightly more damage than zombies.',
+    weakness: 'Teleport has an audible cue.',
+    counterTactics: 'Listen for the teleport sound as a warning. Avoid staying indoors during a Blood Moon night — it is too dark to fight.'
+  },
+  {
+    id: 'werewolf',
+    name: 'Werewolf',
+    threatLevel: 'Class S',
+    hp: 'not documented (among the strongest in the game)',
+    speed: 'Fast and aggressive',
+    danger: 'Spawns on Full Moon nights, around castles, and rarely inside wolf packs. Glowing red eyes; high damage.',
+    weakness: 'not documented (high HP pool)',
+    counterTactics: 'Multiple shotgun blasts, or engage from open ground at long range with a rifle.'
+  },
+  {
+    id: 'outlaw',
+    name: 'Outlaw',
+    threatLevel: 'Class B',
+    hp: 'not documented (low HP)',
+    speed: 'On foot or on horseback',
+    danger: 'High close-range damage. Travels in groups of up to ~8 around desert Outlaw Camps.',
+    weakness: 'Low HP — dies quickly to any gun.',
+    counterTactics: 'Ride past on the train, or snipe with a rifle from distance.'
+  },
+  {
+    id: 'wolf',
+    name: 'Wolf',
+    threatLevel: 'Class C',
+    hp: 'not documented (very low HP)',
+    speed: 'Fast, attacks in packs',
+    danger: 'Pack animal in desert areas; occasionally mixed with Werewolves.',
+    weakness: 'Very low HP.',
+    counterTactics: 'Any weapon works; do not let the pack surround you. Corpses can be used as train fuel.'
+  },
+  {
+    id: 'skeleton',
+    name: 'Skeleton',
+    threatLevel: 'Class B',
+    hp: 'not documented',
+    speed: 'not documented',
+    danger: 'Spawns continuously inside Sterling Mines (~25 total per visit per the Fandom Sterling Mines page).',
+    weakness: 'not documented',
+    counterTactics: 'Expect sustained fights while looting Sterling Mines; bring plenty of ammo.'
+  },
+  {
+    id: 'nikola-tesla',
+    name: 'Nikola Tesla (summonable boss)',
+    threatLevel: 'Class A',
+    hp: 'not documented',
+    speed: 'not documented',
+    danger: 'Summonable at Tesla Lab; summoning yields 5-9 Bonds.',
+    weakness: 'not documented',
+    counterTactics: 'Summon when your build is ready — the Bonds payout is the reward, so prepare for a fight.'
+  }
 ];
+
+// Backwards-compatible alias
+export const ZOMBIE_ENTITIES: EnemyEntity[] = ENEMIES;
+
+// -------------------------------------------------------------
+// UNIQUE LOCATIONS — 80 km total run, fortified town checkpoints
+// every 10 km. Spawn distances vary slightly between sources;
+// each run generates landmarks randomly.
+// -------------------------------------------------------------
+
+export const UNIQUE_LOCATIONS: UniqueLocation[] = [
+  {
+    name: 'Fortified Town Checkpoints (every 10 km)',
+    distanceRangeKm: 'every 10 km of the 80 km route',
+    dangerRating: 'Low',
+    keyEnemies: 'Normal Zombies around houses; Banker Zombie at banks',
+    keyLoot: 'Supplies, healing items, coal, bank vault loot',
+    locationNotes: 'Fortified towns appear roughly every 10 km and are your chance to resupply, heal, and refuel the train.'
+  },
+  {
+    name: 'Fort Constitution',
+    distanceRangeKm: '~10-30 km or 50-60 km (one source reports 10-70 km)',
+    dangerRating: 'High',
+    keyEnemies: 'Zombie Soldiers + Captain Prescott',
+    keyLoot: 'Captain Prescott corpse (sells high to the Sheriff), Notes',
+    locationNotes: 'Cannot spawn between the same two fortified towns as Tesla Lab — sources report the two swap positions between runs.'
+  },
+  {
+    name: 'Tesla Lab',
+    distanceRangeKm: 'between 9-30 km and 50-60 km',
+    dangerRating: 'Moderate',
+    keyEnemies: 'not documented',
+    keyLoot: 'Nikola Tesla summon (yields 5-9 Bonds), Notes',
+    locationNotes: 'Summon Nikola Tesla here for a Bond payout. Mutually exclusive with Fort Constitution in the same run.'
+  },
+  {
+    name: 'Sterling (Sterling Mines)',
+    distanceRangeKm: 'not documented',
+    dangerRating: 'High',
+    keyEnemies: 'Skeletons (~25 spawn continuously once you enter)',
+    keyLoot: 'Notes collectibles',
+    locationNotes: 'Mine structure with sustained Skeleton spawns — bring ammo before going deep.'
+  },
+  {
+    name: 'Stillwater',
+    distanceRangeKm: 'not documented',
+    dangerRating: 'Moderate',
+    keyEnemies: 'not documented',
+    keyLoot: 'not documented',
+    locationNotes: 'A unique location listed on the Fandom Unique Locations page, appearing alongside the other landmarks.'
+  },
+  {
+    name: 'Final Terminal (80 km)',
+    distanceRangeKm: '80 km — end of the standard run',
+    dangerRating: 'Low',
+    keyEnemies: 'not documented',
+    keyLoot: 'Run completion rewards / Bonds',
+    locationNotes: 'Reach 80 km by train to finish the run and claim rewards for buying stronger Classes in the next lobby.'
+  }
+];
+
+// Backwards-compatible alias
+export const ROUTE_STATIONS: UniqueLocation[] = UNIQUE_LOCATIONS;
+
+// -------------------------------------------------------------
+// WEAPONS (verified archetypes — exact DPS/damage: not documented)
+// -------------------------------------------------------------
 
 export const WEAPON_TIER_LIST: WeaponItem[] = [
   {
-    id: 'heavy-shotgun-trench',
-    name: 'Trench Auto-Shotgun Mk.II',
+    id: 'shotgun',
+    name: 'Shotgun',
     category: 'Shotgun',
     tier: 'S+',
-    dps: 420,
-    damage: 180,
-    fireRate: 140,
-    ammoType: '12 Gauge',
-    magSize: 8,
-    description: 'Devastating close-range horde clearer. One-shots Armored Chargers when aimed at helmet joint.'
+    stats: 'Exact DPS/damage: not documented — one-shots most enemies at close range',
+    description: 'The best beginner gun. At close range it one-shots most enemies, including Runner Zombies and Wolves. Also the recommended answer to Werewolves, just with multiple shots.'
   },
   {
-    id: 'rail-mounted-minigun',
-    name: 'Mounted Armored Minigun (Gatling)',
-    category: 'Mounted',
-    tier: 'S+',
-    dps: 680,
-    damage: 45,
-    fireRate: 900,
-    ammoType: '7.62mm',
-    magSize: 250,
-    description: 'Train-mounted turret with continuous suppressive fire. Requires high ammo reserves.'
-  },
-  {
-    id: 'scoped-carbine-762',
-    name: '7.62mm Marksman Rifle',
+    id: 'rifle',
+    name: 'Rifle',
     category: 'Rifle',
     tier: 'S',
-    dps: 310,
-    damage: 125,
-    fireRate: 150,
-    ammoType: '7.62mm',
-    magSize: 10,
-    description: 'Long-range precision shooter. Essential for picking off Spewers before they reach the train windows.'
+    stats: 'Exact DPS/damage: not documented — headshots one-shot',
+    description: 'Long-range precision. A headshot one-shots most targets, making it the safest way to handle Zombie Soldiers, Outlaws and Captain Prescott before they reach you. Requires scavenged ammo.'
   },
   {
-    id: 'industrial-flamethrower',
-    name: 'Pyro-Sprayer Flamethrower',
-    category: 'Special',
-    tier: 'S',
-    dps: 390,
-    damage: 65,
-    fireRate: 360,
-    ammoType: 'Fuel Tank',
-    magSize: 100,
-    description: 'Ignites entire zombie waves instantly. Uses train boiler fuel if reloaded at engine.'
-  },
-  {
-    id: 'tactical-smg-9mm',
-    name: 'Sub-Machine Gun 9mm',
-    category: 'SMG',
-    tier: 'A',
-    dps: 260,
-    damage: 28,
-    fireRate: 550,
-    ammoType: '9mm',
-    magSize: 30,
-    description: 'Lightweight sidearm for rapid train platform defense. Low recoil and cheap ammo crafting.'
-  },
-  {
-    id: 'heavy-sledgehammer',
-    name: 'Titanium Sledgehammer',
+    id: 'melee',
+    name: 'Melee Weapons',
     category: 'Melee',
     tier: 'A',
-    dps: 190,
-    damage: 140,
-    fireRate: 80,
-    ammoType: 'Melee',
-    magSize: 1,
-    description: 'Zero ammunition cost. Knocks back Walkers and breaks barricades with heavy charge swings.'
+    stats: 'Never breaks; hits one enemy per swing; can hit through thin walls',
+    description: 'Melee never degrades, but only strikes one enemy at a time. Watch the wall-pierce quirk: enemies can hit you through walls too, so keep your distance when hugging cover.'
   }
 ];
 
-export const TRAIN_UPGRADES: TrainUpgrade[] = [
+// -------------------------------------------------------------
+// CLASSES (bought with Bonds at the Lobby Tailor shop — verified
+// class list & recommendations from Destructoid/Beebom tier lists.
+// Class-specific perk details: not documented.)
+// -------------------------------------------------------------
+
+export const CLASS_ROLES: GameClass[] = [
   {
-    id: 'boiler-engine-mk4',
-    name: 'Supercharged Turbodiesel Engine Mk.4',
-    category: 'Engine',
-    tierLevel: 4,
-    costScrap: 2500,
-    effect: '+45% Max Top Speed, -20% Fuel Consumption Rate',
-    speedModifierPercent: 45,
-    weightAddTons: 2.5,
-    recommendation: 'Must Have'
+    id: 'werewolf',
+    name: 'Werewolf',
+    category: 'Combat',
+    keyAbility: 'not documented',
+    passiveBonus: 'not documented',
+    tierNote: 'Top of community tier lists (Destructoid/Beebom).',
+    playstyle: 'Aggressive combat class recommended by community tier lists for players who want raw power.'
   },
   {
-    id: 'spiked-armor-plating',
-    name: 'Spiked Steel Cowcatcher & Plating',
-    category: 'Armor',
-    tierLevel: 3,
-    costScrap: 1800,
-    effect: 'Absorbs 80% impact collision damage from horde blockades. Rams zombies without speed drop.',
-    speedModifierPercent: -5,
-    weightAddTons: 4.0,
-    recommendation: 'High ROI'
+    id: 'vampire',
+    name: 'Vampire',
+    category: 'Combat',
+    keyAbility: 'not documented',
+    passiveBonus: 'not documented',
+    tierNote: 'Top of community tier lists (Destructoid/Beebom).',
+    playstyle: 'High-tier combat class ranked alongside Werewolf in community tier lists.'
   },
   {
-    id: 'dual-mounted-turret-roof',
-    name: 'Dual Roof Turret Mounts',
-    category: 'Weaponry',
-    tierLevel: 2,
-    costScrap: 1200,
-    effect: 'Allows mounting 2 player-controlled or auto-turrets on train roof.',
-    speedModifierPercent: 0,
-    weightAddTons: 1.2,
-    recommendation: 'Must Have'
-  },
-  {
-    id: 'coal-bunker-expanded',
-    name: 'High-Capacity Coal Bunker & Tank',
+    id: 'conductor',
+    name: 'Conductor',
     category: 'Utility',
-    tierLevel: 2,
-    costScrap: 900,
-    effect: 'Doubles train fuel capacity from 500 units to 1,000 units.',
-    speedModifierPercent: -2,
-    weightAddTons: 1.5,
-    recommendation: 'High ROI'
+    keyAbility: 'Improved train fuel efficiency',
+    passiveBonus: 'Reduces coal needed per 10 km checkpoint segment from ~2.5 to 2 pieces.',
+    tierNote: 'Top of community tier lists (Destructoid/Beebom).',
+    playstyle: 'The fuel economy class. If your runs keep dying to a stalled train, this is the pick.'
+  },
+  {
+    id: 'zombie',
+    name: 'Zombie',
+    category: 'Combat',
+    keyAbility: 'Can eat corpses to heal',
+    passiveBonus: 'Eating corpses grants a +5 damage bonus against Werewolves.',
+    tierNote: 'High ranking in community tier lists.',
+    playstyle: 'Turns every kill into food. Great sustain in long runs with plenty of fighting.'
+  },
+  {
+    id: 'cowboy',
+    name: 'Cowboy',
+    category: 'Combat',
+    keyAbility: 'not documented',
+    passiveBonus: 'not documented',
+    tierNote: 'High ranking in community tier lists.',
+    playstyle: 'Combat class that community tier lists place near the top.'
+  },
+  {
+    id: 'survivalist',
+    name: 'Survivalist',
+    category: 'Support',
+    keyAbility: 'not documented',
+    passiveBonus: 'not documented',
+    tierNote: 'Common first-pick recommendation for new players.',
+    playstyle: 'A beginner-friendly all-rounder — frequently the recommended first purchase.'
+  },
+  {
+    id: 'doctor',
+    name: 'Doctor',
+    category: 'Support',
+    keyAbility: 'not documented',
+    passiveBonus: 'not documented',
+    tierNote: 'Common first-pick recommendation for new players.',
+    playstyle: 'Healing-focused support class, often recommended as a safe first purchase for beginners.'
+  },
+  {
+    id: 'hunter',
+    name: 'Hunter',
+    category: 'Combat',
+    keyAbility: 'not documented',
+    passiveBonus: 'not documented',
+    tierNote: 'Confirmed as an existing class (Fandom Classes page).',
+    playstyle: 'Confirmed class in the Dead Rails roster; detailed perks not yet documented here.'
   }
 ];
 
-export const ZOMBIE_ENTITIES: ZombieEntity[] = [
-  {
-    id: 'armored-charger-tank',
-    name: 'Armored Charger (Ironhide)',
-    threatLevel: 'Class S',
-    hp: 1200,
-    speed: 'Fast Run',
-    danger: 'Breaches train doors, rams cowcatcher causing derailment hazard.',
-    weakness: 'Exposed neck joint & 12 Gauge Shotgun point-blank blasts.',
-    counterTactics: 'Deploy EMP Shock Traps on tracks or concentrate Mounted Minigun fire.'
-  },
-  {
-    id: 'toxic-spewer',
-    name: 'Toxic Acid Spewer',
-    threatLevel: 'Class A',
-    hp: 450,
-    speed: 'Medium Walk',
-    danger: 'Lobs acid clouds into train cabin, melting engine boilers and players.',
-    weakness: 'Headshots with 7.62mm Marksman Rifle.',
-    counterTactics: 'Eliminate from distance before train reaches 30m proximity.'
-  },
-  {
-    id: 'night-stalker-leaper',
-    name: 'Night Stalker Leaper',
-    threatLevel: 'Class A',
-    hp: 380,
-    speed: 'Ultra Fast',
-    danger: 'Leaps directly onto train roof during tunnels or darkness phases.',
-    weakness: 'Pyro Flamethrower & Roof Searchlights.',
-    counterTactics: 'Turn on Train Floodlights to blind and stun for 3 seconds.'
-  },
-  {
-    id: 'feral-walker-horde',
-    name: 'Feral Horde Walker',
-    threatLevel: 'Class C',
-    hp: 120,
-    speed: 'Slow Shuffle',
-    danger: 'Overwhelms by sheer volume if train slows down near barricades.',
-    weakness: 'Collisions with Cowcatcher & Explosive Barrels.',
-    counterTactics: 'Maintain train speed above 40 km/h to crush without stopping.'
-  }
-];
+// -------------------------------------------------------------
+// FUEL & ECONOMY FACTS (verified — used by the fuel calculator)
+// -------------------------------------------------------------
 
-export const ROUTE_STATIONS: RouteStation[] = [
-  {
-    name: 'Outpost 1: Ironbound Depot',
-    distanceFromStartKm: 0,
-    dangerRating: 'Low',
-    fuelDropChance: '100% Guaranteed',
-    keyLoot: 'Starter Scrap, Basic Coal, 9mm Ammo',
-    outpostNotes: 'Safe zone starter hub with Workbench repair stations.'
-  },
-  {
-    name: 'Outpost 4: Frostline Ravine',
-    distanceFromStartKm: 45,
-    dangerRating: 'Moderate',
-    fuelDropChance: '75%',
-    keyLoot: 'High-Density Fuel Drums, 12 Gauge Crate, Engine Components',
-    outpostNotes: 'Sub-zero temperatures reduce boiler efficiency by 15%.'
-  },
-  {
-    name: 'Outpost 8: Desolation Yard',
-    distanceFromStartKm: 120,
-    dangerRating: 'High',
-    fuelDropChance: '50%',
-    keyLoot: 'Turbodiesel Blueprints, Titanium Sledgehammer, Mounted Gatling Ammo',
-    outpostNotes: 'Heavy Night Stalker presence. Requires Roof Searchlights.'
-  },
-  {
-    name: 'Outpost 10: Terminal Citadel',
-    distanceFromStartKm: 250,
-    dangerRating: 'EXTREME',
-    fuelDropChance: '25%',
-    keyLoot: 'Class S Scrip Chest, Golden Turbine, Endgame Trophy',
-    outpostNotes: 'Final extraction station. Boss waves spawn continuously until train departs.'
-  }
-];
-
-export const CARGO_ITEMS: CargoItem[] = [
-  {
-    id: 'refined-iron-ingot',
-    name: 'Refined Iron Ingot Crate',
-    category: 'Metals',
-    baseScrapValue: 150,
-    weightKg: 25,
-    rarity: 'Common',
-    bestOutpostToSell: 'Outpost 4: Frostline Ravine',
-    bonusMultiplier: 1.25
-  },
-  {
-    id: 'battery-core-high-cap',
-    name: 'High-Capacity Lithium Battery Core',
-    category: 'Electronics',
-    baseScrapValue: 450,
-    weightKg: 10,
-    rarity: 'Rare',
-    bestOutpostToSell: 'Outpost 8: Desolation Yard',
-    bonusMultiplier: 1.6
-  },
-  {
-    id: 'high-octane-fuel-canister',
-    name: 'High-Octane Diesel Canister',
-    category: 'Fuel/Chemicals',
-    baseScrapValue: 300,
-    weightKg: 15,
-    rarity: 'Rare',
-    bestOutpostToSell: 'Outpost 10: Terminal Citadel',
-    bonusMultiplier: 2.0
-  },
-  {
-    id: 'golden-turbine-core',
-    name: 'Pre-War Golden Turbine Relic',
-    category: 'Relic',
-    baseScrapValue: 1500,
-    weightKg: 40,
-    rarity: 'Legendary',
-    bestOutpostToSell: 'Outpost 10: Terminal Citadel',
-    bonusMultiplier: 2.5
-  }
-];
-
-export const CLASS_ROLES: ClassRole[] = [
-  {
-    id: 'boiler-engineer',
-    name: 'Train Engineer / Stoker',
-    roleType: 'Boiler/Engineer',
-    keyAbility: 'Overcharge Pressure Valve (+30% train speed for 15s)',
-    passiveBonus: '-20% Boiler Fuel Drain & +50% Repair Hammer speed',
-    recommendedWeapons: ['Trench Auto-Shotgun Mk.II', 'Pyro-Sprayer Flamethrower'],
-    playstyle: 'Manages engine temperature, keeps boiler stoked, repairs door breaches.'
-  },
-  {
-    id: 'heavy-gunner',
-    name: 'Mounted Turret Specialist',
-    roleType: 'Gunner/Heavy',
-    keyAbility: 'Suppressive Overdrive (-50% mounted minigun overheating)',
-    passiveBonus: '+25% Mounted Weapon Damage & +150 Max Ammo Carry',
-    recommendedWeapons: ['Mounted Armored Minigun', '7.62mm Marksman Rifle'],
-    playstyle: 'Mans train roof Gatling guns, eliminates Armored Chargers and airborne leapers.'
-  },
-  {
-    id: 'scout-looter',
-    name: 'Scavenger & Runner',
-    roleType: 'Scout/Looter',
-    keyAbility: 'Sprint Emergency Dash (3x sprint speed for 5s)',
-    passiveBonus: '+40kg Cargo Carry Weight & 2x Search Speed at Outposts',
-    recommendedWeapons: ['Sub-Machine Gun 9mm', 'Titanium Sledgehammer'],
-    playstyle: 'Disembarks at outposts, loots scrap chests, brings fuel drums back to train.'
-  }
-];
+export const FUEL_FACTS = {
+  totalRunKm: 80,
+  checkpointIntervalKm: 10,
+  coalPerSegment: 2.5,
+  coalPerSegmentConductor: 2,
+  teslaSummonBonds: '5-9 Bonds',
+  starterCoalAdvice: 'Buy about 3 pieces of coal at the start as a safety buffer.',
+  freeFuelSources: 'Newspapers, scrap, and the corpses of enemies and animals (corpses can also be sold to the Sheriff for cash).'
+};

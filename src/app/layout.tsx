@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dead Rails Wiki 2026 | Train Fuel Calculator & Codes",
-  description: "Official Roblox Dead Rails Wiki & Database. Calculate boiler fuel, optimize train armor, check DPS tier lists, and claim working codes.",
+  title: "Dead Rails Wiki | Coal Calculator, Enemy Bestiary & 80 km Route Map",
+  description: "Verified Roblox Dead Rails Wiki. Calculate coal per 10 km checkpoint, browse the verified enemy bestiary and 80 km route map, and compare classes before spending Bonds.",
   metadataBase: new URL("https://deadrails.robloxwikihub.com"),
 };
 

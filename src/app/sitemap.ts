@@ -6,13 +6,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
     '/fuel-calculator',
+    '/calculator',
     '/weapons-tier-list',
     '/codes',
-    '/train-upgrades',
     '/zombies-guide',
     '/routes-map',
     '/beginner-guide',
-    '/cargo-trade-calculator',
     '/class-roles',
     '/night-survival-simulator',
   ];

@@ -6,45 +6,46 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FuelCalculator from '@/components/FuelCalculator';
 import AuthorCard from '@/components/AuthorCard';
-import { REDEEM_CODES, WEAPON_TIER_LIST, ZOMBIE_ENTITIES, ROUTE_STATIONS } from '@/data/wikiData';
-import { Flame, Crosshair, Gift, Shield, Database, MapPin, ArrowRight, CheckCircle2, Zap, Award } from 'lucide-react';
+import { REDEEM_CODES, WEAPON_TIER_LIST, ENEMIES, UNIQUE_LOCATIONS, DATA_VERIFIED_DATE } from '@/data/wikiData';
+import { Flame, Crosshair, Gift, MapPin, ArrowRight, Info } from 'lucide-react';
 
 export const metadata = {
-  title: 'Dead Rails Wiki 2026 | Train Fuel Calculator, Weapons Tier List & Codes',
-  description: 'The ultimate Roblox Dead Rails Wiki & database. Calculate train fuel consumption, optimize train upgrades, check DPS weapon tier lists, and redeem 2026 working codes.',
-  keywords: ['Dead Rails Wiki', 'Roblox Dead Rails codes', 'Dead Rails fuel calculator', 'Dead Rails weapons tier list', 'Dead Rails train upgrades', 'Dead Rails guide'],
+  title: 'Dead Rails Wiki | Coal & Fuel Calculator, Enemy Bestiary & 80 km Route Map',
+  description: 'Verified Roblox Dead Rails wiki: coal and fuel calculator (2.5 coal per 10 km checkpoint), enemy bestiary (Vampires, Werewolves, Zombies), 80 km route map with Fort Constitution, Tesla Lab, Sterling and Stillwater.',
+  keywords: ['Dead Rails Wiki', 'Roblox Dead Rails', 'Dead Rails fuel calculator', 'Dead Rails enemies', 'Dead Rails map', 'Dead Rails classes', 'Dead Rails guide'],
   alternates: {
     canonical: 'https://deadrails.robloxwikihub.com',
   },
 };
 
 export default function HomePage() {
+  const activeCodeCount = REDEEM_CODES.filter((c) => c.status === 'ACTIVE').length;
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'How do I calculate fuel consumption in Dead Rails?',
+        name: 'How much coal does the train need in Dead Rails?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Use our interactive Fuel & Distance Calculator. Select your route distance, train speed, cargo weight, and engine tier to get exact Coal/Oil drum requirements.',
+          text: 'Each 10 km checkpoint segment of the 80 km run takes about 2.5 pieces of coal, or 2 pieces if you play the Conductor class. Newspapers, scrap, and enemy or animal corpses also work as free fuel. A good habit is to buy about 3 pieces of coal at the start as a safety buffer.',
         },
       },
       {
         '@type': 'Question',
-        name: 'What is the best weapon in Dead Rails?',
+        name: 'What enemies spawn in Dead Rails?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The Trench Auto-Shotgun Mk.II (S+ Tier) is the best close-range horde clearer, while the Mounted Gatling Minigun dominates mounted defense.',
+          text: 'Confirmed enemies include Normal Zombies (and the Banker Zombie variant), Runner Zombies, Zombie Soldiers, Captain Prescott at Fort Constitution, Vampires during Blood Moons, Werewolves during Full Moons, Outlaws in desert camps, Wolves, and Skeletons inside Sterling Mines.',
         },
       },
       {
         '@type': 'Question',
-        name: 'Where do I redeem Dead Rails codes?',
+        name: 'How long is a Dead Rails run?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Open the train radio console in game, click on the "Codes" tab, and paste active codes like RAILRUN2026 to claim free Scrap and Fuel.',
+          text: 'A standard run covers about 80 km of railway, with fortified town checkpoints roughly every 10 km where you can resupply, heal and refuel. Unique locations such as Fort Constitution, Tesla Lab, Sterling Mines and Stillwater spawn at random each run.',
         },
       },
     ],
@@ -56,7 +57,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      
+
       <Header />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
@@ -69,15 +70,15 @@ export default function HomePage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono">
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                2026 Survival Database Updated
+                Verified Data — Last Checked {DATA_VERIFIED_DATE}
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black font-mono tracking-tight uppercase leading-tight text-white">
-                SURVIVE THE <span className="gradient-title">DEAD RAILS</span> EXPRSS
+                SURVIVE THE <span className="gradient-title">DEAD RAILS</span> 80 KM RUN
               </h1>
 
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl font-sans">
-                Master train logistics, calculate exact boiler fuel ratios, optimize cowcatcher armor plating, and crush zombie horde blockades with verified meta weaponry.
+                Calculate how much coal your train burns per 10 km checkpoint, learn every verified enemy from Runner Zombies to Blood Moon Vampires, and plan your route past Fort Constitution, Tesla Lab and Sterling Mines.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-2 font-mono text-xs">
@@ -85,13 +86,13 @@ export default function HomePage() {
                   href="/fuel-calculator"
                   className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-bold hover:brightness-110 shadow-lg shadow-amber-500/20 flex items-center gap-2 transition-all"
                 >
-                  <Flame className="w-4 h-4" /> Open Fuel Calculator
+                  <Flame className="w-4 h-4" /> Open Coal Calculator
                 </Link>
                 <Link
-                  href="/codes"
+                  href="/zombies-guide"
                   className="px-6 py-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 hover:bg-slate-700 flex items-center gap-2 transition-all"
                 >
-                  <Gift className="w-4 h-4 text-emerald-400" /> Active Redeem Codes
+                  <Crosshair className="w-4 h-4 text-red-400" /> Enemy Bestiary
                 </Link>
               </div>
             </div>
@@ -99,24 +100,24 @@ export default function HomePage() {
             {/* Quick Stat Highlights */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-4 font-mono">
               <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1">
-                <span className="text-[10px] text-slate-400 uppercase">Active Codes</span>
-                <strong className="text-2xl text-emerald-400 block font-black">4 WORKING</strong>
-                <span className="text-[10px] text-slate-500">Free Scrap & Fuel</span>
+                <span className="text-[10px] text-slate-400 uppercase">Total Run</span>
+                <strong className="text-2xl text-amber-400 block font-black">80 KM</strong>
+                <span className="text-[10px] text-slate-500">checkpoints every 10 km</span>
               </div>
               <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1">
-                <span className="text-[10px] text-slate-400 uppercase">Meta Weapons</span>
-                <strong className="text-2xl text-red-400 block font-black">6 ARCHETYPES</strong>
-                <span className="text-[10px] text-slate-500">S+ to B Rank</span>
+                <span className="text-[10px] text-slate-400 uppercase">Coal Per Segment</span>
+                <strong className="text-2xl text-orange-400 block font-black">~2.5</strong>
+                <span className="text-[10px] text-slate-500">2 with Conductor</span>
               </div>
               <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1">
-                <span className="text-[10px] text-slate-400 uppercase">Train Upgrades</span>
-                <strong className="text-2xl text-cyan-400 block font-black">4 CATEGORIES</strong>
-                <span className="text-[10px] text-slate-500">Engine to Armor</span>
+                <span className="text-[10px] text-slate-400 uppercase">Verified Enemies</span>
+                <strong className="text-2xl text-red-400 block font-black">{ENEMIES.length}</strong>
+                <span className="text-[10px] text-slate-500">incl. Vampire &amp; Werewolf</span>
               </div>
               <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1">
-                <span className="text-[10px] text-slate-400 uppercase">Station Routes</span>
-                <strong className="text-2xl text-amber-400 block font-black">250 KM</strong>
-                <span className="text-[10px] text-slate-500">Outpost 1 to 10</span>
+                <span className="text-[10px] text-slate-400 uppercase">Unique Locations</span>
+                <strong className="text-2xl text-cyan-400 block font-black">4</strong>
+                <span className="text-[10px] text-slate-500">random per run</span>
               </div>
             </div>
           </div>
@@ -130,27 +131,27 @@ export default function HomePage() {
           <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-4 flex flex-col items-center">
             <Image
               src="/images/dead-rails-hero.webp"
-              alt="Dead Rails Armored Train in Zombie Wasteland"
+              alt="Dead Rails train traveling the railway through enemy territory"
               width={640}
               height={360}
               className="rounded-xl object-cover w-full h-52 border border-slate-800"
               priority
             />
             <p className="text-xs text-slate-400 mt-2 text-center font-mono">
-              Figure 1: Official RCM Games Dead Rails locomotive navigating the wasteland railway.
+              Figure 1: The train on the ~80 km Dead Rails railway — loot checkpoints, keep it fueled.
             </p>
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-4 flex flex-col items-center">
             <Image
               src="/images/dead-rails-icon.webp"
-              alt="Dead Rails Game Icon and Threat Indicator"
+              alt="Dead Rails game icon"
               width={640}
               height={360}
               className="rounded-xl object-contain w-full h-52 bg-black/50 border border-slate-800"
             />
             <p className="text-xs text-slate-400 mt-2 text-center font-mono">
-              Figure 2: Official Dead Rails Survival Icon — Wasteland danger rating & Outpost emblems.
+              Figure 2: Official Dead Rails icon.
             </p>
           </div>
         </div>
@@ -159,7 +160,7 @@ export default function HomePage() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold font-mono uppercase text-slate-100 flex items-center gap-2">
-              <Flame className="w-6 h-6 text-amber-400" /> Interactive Fuel Calculator
+              <Flame className="w-6 h-6 text-amber-400" /> Interactive Coal &amp; Fuel Calculator
             </h2>
             <Link href="/fuel-calculator" className="text-xs font-mono text-amber-400 hover:underline flex items-center gap-1">
               Full Screen Tool <ArrowRight className="w-3.5 h-3.5" />
@@ -168,90 +169,123 @@ export default function HomePage() {
           <FuelCalculator />
         </section>
 
-        {/* WEAPONS TIER LIST PREVIEW */}
+        {/* ENEMIES PREVIEW */}
         <section className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-2xl font-bold font-mono uppercase text-slate-100 flex items-center gap-2">
-                <Crosshair className="w-6 h-6 text-red-400" /> Weapons Meta Tier List
+                <Crosshair className="w-6 h-6 text-red-400" /> Verified Enemy Bestiary
               </h2>
-              <p className="text-xs text-slate-400 font-sans mt-1">DPS rankings and horde clear capability in Dead Rails 2026.</p>
+              <p className="text-xs text-slate-400 font-sans mt-1">Night events change the spawn table: Blood Moons bring Vampires, Full Moons bring Werewolves.</p>
             </div>
-            <Link href="/weapons-tier-list" className="text-xs font-mono text-red-400 hover:underline flex items-center gap-1">
-              View All Weapons <ArrowRight className="w-3.5 h-3.5" />
+            <Link href="/zombies-guide" className="text-xs font-mono text-red-400 hover:underline flex items-center gap-1">
+              View All Enemies <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
-            {WEAPON_TIER_LIST.slice(0, 3).map((item) => (
-              <div key={item.id} className="bg-slate-900/80 border border-slate-800 hover:border-red-500/40 rounded-2xl p-5 space-y-3 transition-all">
+            {ENEMIES.slice(0, 3).map((enemy) => (
+              <div key={enemy.id} className="bg-slate-900/80 border border-slate-800 hover:border-red-500/40 rounded-2xl p-5 space-y-3 transition-all">
                 <div className="flex items-center justify-between">
                   <span className="px-2.5 py-1 rounded bg-red-500/20 text-red-400 font-bold text-xs border border-red-500/30">
-                    {item.tier} TIER
+                    {enemy.threatLevel}
                   </span>
-                  <span className="text-xs text-slate-400">{item.category}</span>
+                  <span className="text-xs text-slate-400">{enemy.speed}</span>
                 </div>
-                <h3 className="font-bold text-base text-slate-100">{item.name}</h3>
-                <div className="grid grid-cols-2 gap-2 text-xs bg-slate-950 p-3 rounded-xl border border-slate-800/80">
-                  <div>
-                    <span className="text-slate-500 block text-[10px]">DPS</span>
-                    <strong className="text-red-400">{item.dps}</strong>
-                  </div>
-                  <div>
-                    <span className="text-slate-500 block text-[10px]">AMMO</span>
-                    <strong className="text-slate-300">{item.ammoType}</strong>
-                  </div>
-                </div>
-                <p className="text-xs font-sans text-slate-400 line-clamp-2">{item.description}</p>
+                <h3 className="font-bold text-base text-slate-100">{enemy.name}</h3>
+                <p className="text-xs font-sans text-slate-400 line-clamp-3">{enemy.danger}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* LOCATIONS PREVIEW */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold font-mono uppercase text-slate-100 flex items-center gap-2">
+                <MapPin className="w-6 h-6 text-amber-400" /> Route &amp; Unique Locations
+              </h2>
+              <p className="text-xs text-slate-400 font-sans mt-1">Fort Constitution, Tesla Lab, Sterling Mines and Stillwater — spawn positions are random each run.</p>
+            </div>
+            <Link href="/routes-map" className="text-xs font-mono text-amber-400 hover:underline flex items-center gap-1">
+              Full Route Map <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+            {UNIQUE_LOCATIONS.slice(1, 5).map((loc) => (
+              <div key={loc.name} className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 space-y-2">
+                <strong className="text-slate-100 block">{loc.name}</strong>
+                <span className="text-amber-400 text-[10px] block">{loc.distanceRangeKm}</span>
+                <p className="text-slate-400 font-sans text-xs">{loc.keyEnemies}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* CODES PREVIEW */}
-        <section className="bg-slate-900/60 border border-emerald-500/30 rounded-3xl p-8 space-y-6">
-          <div className="flex items-center justify-between">
+        {activeCodeCount > 0 ? (
+          <section className="bg-slate-900/60 border border-emerald-500/30 rounded-3xl p-8 space-y-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="p-2.5 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/30">
+                  <Gift className="w-6 h-6" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold font-mono text-slate-100 uppercase">Verified Redeem Codes</h2>
+                  <p className="text-xs text-slate-400 font-sans">Claim free in-game rewards.</p>
+                </div>
+              </div>
+              <Link href="/codes" className="px-4 py-2 bg-emerald-500/20 text-emerald-300 rounded-xl text-xs font-mono hover:bg-emerald-500/30 border border-emerald-500/40 transition-colors">
+                Claim All Codes
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
+              {REDEEM_CODES.filter((c) => c.status === 'ACTIVE').map((codeItem) => (
+                <div key={codeItem.code} className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <strong className="text-emerald-400 font-bold text-sm tracking-wider">{codeItem.code}</strong>
+                    <span className="px-1.5 py-0.5 bg-emerald-500/10 text-emerald-400 text-[10px] rounded">ACTIVE</span>
+                  </div>
+                  <p className="text-slate-300 font-sans text-xs">{codeItem.reward}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : (
+          <section className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="p-2.5 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/30">
+              <div className="p-2.5 bg-slate-800 rounded-xl text-slate-400 border border-slate-700">
                 <Gift className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-xl font-bold font-mono text-slate-100 uppercase">Verified Redeem Codes</h2>
-                <p className="text-xs text-slate-400 font-sans">Updated . Claim free Scrap, Scrip, and Coal.</p>
+                <h2 className="text-xl font-bold font-mono text-slate-100 uppercase">Redeem Codes</h2>
+                <p className="text-xs text-slate-400 font-sans">No codes are verified as working right now.</p>
               </div>
             </div>
-            <Link href="/codes" className="px-4 py-2 bg-emerald-500/20 text-emerald-300 rounded-xl text-xs font-mono hover:bg-emerald-500/30 border border-emerald-500/40 transition-colors">
-              Claim All Codes
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
-            {REDEEM_CODES.filter((c) => c.status === 'ACTIVE').map((codeItem) => (
-              <div key={codeItem.code} className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
-                <div className="flex items-center justify-between">
-                  <strong className="text-emerald-400 font-bold text-sm tracking-wider">{codeItem.code}</strong>
-                  <span className="px-1.5 py-0.5 bg-emerald-500/10 text-emerald-400 text-[10px] rounded">ACTIVE</span>
-                </div>
-                <p className="text-slate-300 font-sans text-xs">{codeItem.reward}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+            <p className="text-xs text-slate-400 font-sans flex items-start gap-2">
+              <Info className="w-4 h-4 shrink-0 mt-0.5 text-amber-400" />
+              We only list codes we can verify — we never publish fabricated &quot;active&quot; codes. Check the game&apos;s official Roblox page and Discord for current drops, and our <Link href="/codes" className="text-emerald-400 hover:underline font-mono">codes page</Link> for updates.
+            </p>
+          </section>
+        )}
 
         {/* FAQ ACCORDION SECTION */}
         <section className="space-y-6 font-sans">
           <h2 className="text-2xl font-bold font-mono uppercase text-slate-100">Frequently Asked Questions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
             <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-2">
-              <h3 className="font-bold text-amber-400 font-mono">How do I prevent train derailment in Dead Rails?</h3>
+              <h3 className="font-bold text-amber-400 font-mono">What fuel can the train burn in Dead Rails?</h3>
               <p className="text-slate-300 text-xs leading-relaxed">
-                Derailment occurs when collision speed with Armored Chargers exceeds cowcatcher rating or when track switches are sabotaged. Upgrade to Spiked Steel Plating and keep speed below 60 km/h when entering barricaded zones.
+                Coal is the baseline (~2.5 pieces per 10 km checkpoint segment; the Conductor class needs only 2). Newspapers, scrap, and the corpses of enemies and animals all work as free fuel — and corpses can alternatively be sold to the Sheriff for cash.
               </p>
             </div>
             <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-2">
-              <h3 className="font-bold text-amber-400 font-mono">What is the most efficient fuel type?</h3>
+              <h3 className="font-bold text-amber-400 font-mono">How do I survive night events like Blood Moons?</h3>
               <p className="text-slate-300 text-xs leading-relaxed">
-                High-Density Oil Drums give 100 fuel units per slot, whereas Coal Stacks give 25 units per slot. Oil Drums are recommended for long distances past Outpost 4.
+                Regular nights spawn fast Runner Zombies, Blood Moons spawn Vampires, and Full Moons spawn Werewolves — among the strongest enemies in the game. Listen for the Vampire teleport sound cue, avoid staying indoors during a Blood Moon (it is too dark), and use a shotgun or open-ground rifle shots against Werewolves.
               </p>
             </div>
           </div>

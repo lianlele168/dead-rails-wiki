@@ -14,7 +14,7 @@ export default function Footer() {
             <span className="font-mono font-bold text-slate-100 text-sm">DEAD RAILS WIKI</span>
           </div>
           <p className="text-slate-400 leading-relaxed max-w-md">
-            Dead Rails Wiki is an independent fan database and survival calculator hub for the Roblox game Dead Rails. Calculate fuel consumption, evaluate train upgrades, and access verified redeem codes.
+            Dead Rails Wiki is an independent fan database and survival calculator hub for the Roblox game Dead Rails. Calculate coal per 10 km checkpoint, browse the verified enemy bestiary and 80 km route map, and compare classes — all data sourced from verified public references.
           </p>
           <p className="text-[11px] text-slate-500">
             Disclaimer: Dead Rails Wiki is not affiliated with or endorsed by Roblox Corporation or the Dead Rails developer team. All game assets belong to their respective owners.
@@ -24,10 +24,10 @@ export default function Footer() {
         <div>
           <h4 className="font-mono font-bold text-slate-200 text-xs uppercase tracking-wider mb-3 text-amber-400">Survival Tools</h4>
           <ul className="space-y-2 font-mono text-xs">
-            <li><Link href="/fuel-calculator" className="hover:text-amber-400 transition-colors">Fuel Consumption Calc</Link></li>
-            <li><Link href="/weapons-tier-list" className="hover:text-amber-400 transition-colors">Weapons DPS Tier List</Link></li>
-            <li><Link href="/codes" className="hover:text-amber-400 transition-colors">2026 Redeem Codes</Link></li>
-            <li><Link href="/train-upgrades" className="hover:text-amber-400 transition-colors">Train Upgrade ROI</Link></li>
+            <li><Link href="/fuel-calculator" className="hover:text-amber-400 transition-colors">Coal & Fuel Calc</Link></li>
+            <li><Link href="/weapons-tier-list" className="hover:text-amber-400 transition-colors">Weapons Guide</Link></li>
+            <li><Link href="/zombies-guide" className="hover:text-amber-400 transition-colors">Enemy Bestiary</Link></li>
+            <li><Link href="/routes-map" className="hover:text-amber-400 transition-colors">Route Map</Link></li>
           </ul>
         </div>
 

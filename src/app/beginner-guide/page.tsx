@@ -4,29 +4,30 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AuthorCard from '@/components/AuthorCard';
-import { ShieldCheck, Flame, Crosshair, ArrowRight, CheckCircle2, AlertTriangle, Hammer, HelpCircle } from 'lucide-react';
+import { ShieldCheck, Flame, Crosshair, CheckCircle2, HelpCircle } from 'lucide-react';
+import { FUEL_FACTS, DATA_VERIFIED_DATE, DATA_SOURCES } from '@/data/wikiData';
 
 export const metadata = {
-  title: 'Dead Rails Beginner Guide | Day 1 to 10 Train Survival SOP ',
-  description: 'Complete beginner SOP guide for Roblox Dead Rails. Master boiler steam heat management, fuel preservation, cowcatcher ramming tactics, and high-tier scrap salvage.',
+  title: 'Dead Rails Beginner Guide | First Run Survival, Fuel & Weapon Basics',
+  description: 'Verified beginner guide for Roblox Dead Rails: buy starting coal, survive Runner Zombie nights and Blood/Full Moon events, use melee safely, loot checkpoints, and spend Bonds on the right first class.',
 };
 
 const BEGINNER_FAQS = [
   {
-    question: 'How do you keep the boiler from exploding in Dead Rails?',
-    answer: 'Monitor the steam gauge on the engine console. If temperature exceeds 85°C, ease off the throttle to half speed and pull the manual steam pressure release valve on the left side of the firebox.',
+    question: 'How much coal should I buy at the start of a run?',
+    answer: `About 3 pieces as a safety buffer. Each 10 km checkpoint segment burns roughly ${FUEL_FACTS.coalPerSegment} coal (${FUEL_FACTS.coalPerSegmentConductor} with Conductor), and you can stretch that with free fuel: newspapers, scrap, and enemy or animal corpses.`,
   },
   {
-    question: 'What is the best starting weapon against zombie hordes?',
-    answer: 'The Lever-Action Carbine paired with a Heavy Machete provides the best balance of ammo conservation and one-hit headshot capability for clearing train boarders.',
+    question: 'What is the best starting weapon in Dead Rails?',
+    answer: 'The Shotgun. It is the best beginner gun and one-shots most enemies at close range. For anything you do not want to face up close — Zombie Soldiers, Outlaws, Captain Prescott — a Rifle headshot does the job from distance.',
   },
   {
-    question: 'How do you survive vampire attacks during Night Cycles?',
-    answer: 'Vampires cannot spawn in lighted zones. Install UV floodlights on your outer train catwalks and barricade all wooden car windows with reinforced scrap iron before sundown.',
+    question: 'How do I survive Vampires during a Blood Moon?',
+    answer: 'Listen for the teleport sound effect — it warns you before a Vampire appears. Avoid staying indoors on Blood Moon nights because it is too dark to fight inside. Vampires disappear at daytime, leaving lootable corpses.',
   },
   {
-    question: 'Where do you find high-value electrical components?',
-    answer: 'Loot the abandoned telegraph stations and radio towers located between Outpost 3 and Outpost 5. Use lockpicks on military footlockers for guaranteed battery and dynamo drops.',
+    question: 'Which class should I buy first with Bonds?',
+    answer: 'Community guides most often recommend Survivalist or Doctor as a safe first purchase. If fuel keeps ending your runs, Conductor saves coal every segment; Werewolf, Vampire and Zombie top the combat tier lists.',
   },
 ];
 
@@ -43,11 +44,10 @@ export default function BeginnerGuidePage() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
-
               author: {
                 '@type': 'Person',
-                name: 'Garrison "Cinders" Vance',
-                jobTitle: 'Lead Locomotive Engineer & Zombie Horde Specialist',
+                name: 'Marcus "Cinders" Vance',
+                jobTitle: 'Dead Rails Wiki Editor & Guide Author',
               },
               mainEntity: BEGINNER_FAQS.map((faq) => ({
                 '@type': 'Question',
@@ -66,10 +66,19 @@ export default function BeginnerGuidePage() {
             <ShieldCheck className="w-3.5 h-3.5" /> Beginner Survival Protocol
           </div>
           <h1 className="text-3xl sm:text-5xl font-black font-mono tracking-tight text-slate-100 uppercase">
-            Dead Rails: Days 1 to 10 Locomotive Survival Blueprint
+            Dead Rails Beginner Guide: Your First 80 km Run
           </h1>
           <p className="text-slate-400 text-sm max-w-3xl leading-relaxed">
-            A comprehensive, field-tested operational SOP for surviving harsh wasteland train journeys in Roblox Dead Rails. Learn boiler mechanics, horde barricading, optimal gear crafting paths, and route logistics.
+            Dead Rails drops you on a train bound for an ~80 km terminal, with fortified town checkpoints every 10 km and randomly generated landmarks in between. This guide covers the verified basics: fuel, weapons, night events, and spending your first Bonds. Data verified {DATA_VERIFIED_DATE}.
+          </p>
+          <p className="text-xs text-slate-500 font-mono">
+            Sources:{' '}
+            {DATA_SOURCES.map((s, i) => (
+              <span key={s.url}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:underline">{s.name}</a>
+                {i < DATA_SOURCES.length - 1 ? ' • ' : ''}
+              </span>
+            ))}
           </p>
         </div>
 
@@ -80,27 +89,27 @@ export default function BeginnerGuidePage() {
           <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-4 flex flex-col items-center">
             <Image
               src="/images/dead-rails-hero.webp"
-              alt="Dead Rails Locomotive Steam Engine and Desert Railway Tracks"
+              alt="Dead Rails train on the railway through enemy territory"
               width={640}
               height={360}
               className="rounded-xl object-cover w-full h-56 border border-slate-800"
               priority
             />
             <p className="text-xs text-slate-400 mt-3 text-center font-mono">
-              Figure 1: Armored Steam Engine traversing the infected railway wilderness.
+              Figure 1: Keep the train fueled all the way to the 80 km terminal.
             </p>
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 p-4 flex flex-col items-center">
             <Image
               src="/images/dead-rails-icon.webp"
-              alt="Dead Rails Official Icon and Zombie Threat Indicator"
+              alt="Dead Rails official game icon"
               width={640}
               height={360}
               className="rounded-xl object-contain w-full h-56 bg-black/60 border border-slate-800"
             />
             <p className="text-xs text-slate-400 mt-3 text-center font-mono">
-              Figure 2: Official Dead Rails Emblem — Zombie infected wastelands and survivor outpost badges.
+              Figure 2: Official Dead Rails icon.
             </p>
           </div>
         </div>
@@ -110,15 +119,15 @@ export default function BeginnerGuidePage() {
           <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
             <h2 className="text-xl font-bold font-mono text-amber-400 uppercase flex items-center gap-2">
               <span className="w-7 h-7 rounded-lg bg-amber-500/20 flex items-center justify-center text-xs">01</span>
-              Phase 1: Pre-Departure Boiler & Fuel Check
+              Step 1: Starting Fuel &amp; the Core Loop
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Before touching the ignition throttle at Outpost 1, every crew must execute a mandatory three-point pre-flight checklist. Running out of steam while stalled on open track guarantees a wipe against the first roaming zombie horde. Always stock at least 2 Coal Stacks or 1 Refined Oil Drum per 5 kilometers of expected track. You can cross-check precise requirements using our interactive <Link href="/calculator" className="text-amber-400 hover:underline font-mono font-bold">Fuel & Logistics Calculator</Link>.
+              The core loop is simple: drive the train along the railway, stop at towns and landmarks to loot and fight, and never let the firebox run dry. Each 10 km segment takes about {FUEL_FACTS.coalPerSegment} coal ({FUEL_FACTS.coalPerSegmentConductor} as Conductor). {FUEL_FACTS.starterCoalAdvice} Cross-check any run length with our <Link href="/fuel-calculator" className="text-amber-400 hover:underline font-mono font-bold">Coal &amp; Fuel Calculator</Link>.
             </p>
             <ul className="space-y-2 text-xs text-slate-300 font-sans list-disc list-inside">
-              <li>Inspect boiler water gauge: Ensure water reservoir is at minimum 75% capacity to prevent thermal dry-firing.</li>
-              <li>Load coal chunks into firebox until baseline pressure needle hits 120 PSI.</li>
-              <li>Assign one dedicated crew member to operate the coal shovel while others scavenge outpost perimeter crates.</li>
+              <li>Free fuel is everywhere: newspapers, scrap, and the corpses of enemies and animals.</li>
+              <li>Corpses double as cash — the Sheriff buys them — so choose between fuel and money per corpse.</li>
+              <li>Fortified towns appear roughly every 10 km: resupply, heal, and loot banks (the Banker Zombie drops the vault code).</li>
             </ul>
           </div>
 
@@ -126,19 +135,19 @@ export default function BeginnerGuidePage() {
           <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
             <h2 className="text-xl font-bold font-mono text-cyan-400 uppercase flex items-center gap-2">
               <span className="w-7 h-7 rounded-lg bg-cyan-500/20 flex items-center justify-center text-xs">02</span>
-              Phase 2: Speed Control, Track Hazards & Cowcatcher Ramming
+              Step 2: Weapons That Actually Work
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Speed in Dead Rails is both your greatest defensive weapon and your primary fuel sink. Cruising at 50 to 60 km/h optimizes fuel efficiency. However, when visual spotters call out track debris or Armored Charger zombies, the engineer must immediately throttle to maximum speed (75 km/h) to engage cowcatcher kinetic ramming. Ramming at under 45 km/h causes the train to derail or stall, taking direct structural hull damage.
+              Three archetypes cover everything. The <strong>Shotgun</strong> is the best beginner gun — one shot kills most enemies at close range. The <strong>Rifle</strong> headshot one-shots from long range, which is the safe way to deal with Zombie Soldiers, Outlaw camps and Captain Prescott. <strong>Melee weapons</strong> never break, but hit one enemy per swing — and remember enemies can also hit you through thin walls, so do not hug cover during a fight. Ranged weapons need scavenged ammo, so stock up at checkpoints.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 text-xs">
-                <strong className="text-amber-400 block mb-1">Track Switch Levers:</strong>
-                Keep sniper rifles equipped. Target track switches from afar to divert onto clear bypass lines and avoid wrecked ghost trains.
+                <strong className="text-amber-400 block mb-1">Desert Outlaw Camps:</strong>
+                Outlaws travel in groups of up to ~8, on foot or horseback, and hit hard up close. Ride past on the train or snipe from distance.
               </div>
               <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 text-xs">
-                <strong className="text-rose-400 block mb-1">Thermal Blowouts:</strong>
-                If boiler temperature gauge exceeds 90°C, vent the side emergency valve immediately to avoid an engine explosion.
+                <strong className="text-rose-400 block mb-1">Wolves:</strong>
+                Very low HP but they swarm in packs, occasionally mixed with Werewolves. Any weapon works — just do not get surrounded.
               </div>
             </div>
           </div>
@@ -147,26 +156,21 @@ export default function BeginnerGuidePage() {
           <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
             <h2 className="text-xl font-bold font-mono text-emerald-400 uppercase flex items-center gap-2">
               <span className="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center text-xs">03</span>
-              Phase 3: Night Cycle Defense & Barricade Priorities
+              Step 3: Surviving the Night — Moons &amp; Events
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed">
-              As dusk falls in the wastelands, mutant zombies and nocturnal vampires become aggressive and attempt boarding actions. Boarders climb train ladders and enter through window slats. To fortify your train, convert all early scrap metal into Reinforced Steel Window Shutters. Deploy UV spotlight lanterns around the locomotive cabin to burn approaching vampires before they latch onto the engineer.
+              Night events are the main difficulty spike. Regular nights spawn fast <strong>Runner Zombies</strong> around you and the train — guns only, since melee cannot chase them down. A <strong>Blood Moon</strong> brings Vampires: they teleport to close you (listen for the sound cue), and avoid staying indoors because it is too dark to fight. A <strong>Full Moon</strong> brings Werewolves, among the strongest enemies in the game — answer with multiple shotgun blasts or rifle shots from open ground. Vampires vanish at daytime (leaving corpses), so use daylight to move and loot. See the full spawn table in our <Link href="/night-survival-simulator" className="text-emerald-400 hover:underline font-mono font-bold">Night &amp; Moon Event Planner</Link>.
             </p>
-            <ul className="space-y-2 text-xs text-slate-300 font-sans list-disc list-inside">
-              <li>Deploy barbed wire along exterior carriage walkways to slow down runner zombies.</li>
-              <li>Keep fire extinguishers accessible in every carriage to combat molotov thrower mutants.</li>
-              <li>Never step onto the train roof during sandstorm weather without an tether harness.</li>
-            </ul>
           </div>
 
           {/* Phase 4 */}
           <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4">
             <h2 className="text-xl font-bold font-mono text-purple-400 uppercase flex items-center gap-2">
               <span className="w-7 h-7 rounded-lg bg-purple-500/20 flex items-center justify-center text-xs">04</span>
-              Phase 4: Scrap Economy & Crafting Priority Hierarchy
+              Step 4: Bonds, Landmarks &amp; Your First Class
             </h2>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Scrap is the lifeblood currency of Dead Rails. Avoid wasting scrap on low-tier pistol ammunition. Prioritize crafting bench investments in this strict order: Tier 2 Heavy Boiler &rarr; Cowcatcher Spikes &rarr; Medical First Aid Station &rarr; High-Capacity Water Tender.
+              Finishing runs and looting the world earns <strong>Bonds</strong>, the currency for buying Classes at the Lobby Tailor shop. Landmarks are worth planning around: summoning <strong>Nikola Tesla</strong> at Tesla Lab pays 5-9 Bonds, <strong>Sterling Mines</strong> floods you with ~25 Skeletons but holds Notes collectibles, and killing <strong>Captain Prescott</strong> at Fort Constitution gives you a corpse the Sheriff pays handsomely for. For a first purchase, community guides recommend <strong>Survivalist</strong> or <strong>Doctor</strong>; combat tier lists favor Werewolf, Vampire, Conductor and Zombie. Full breakdown in our <Link href="/class-roles" className="text-purple-400 hover:underline font-mono font-bold">Classes Guide</Link>.
             </p>
           </div>
 

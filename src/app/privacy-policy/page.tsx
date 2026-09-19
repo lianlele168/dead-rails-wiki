@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
               <span>1. Zero Personal Data &amp; No Roblox Credentials</span>
             </h2>
             <p>
-              Dead Rails Wiki does not require account creation or registration. We will <strong className="text-white">NEVER</strong> request your Roblox username, password, session cookies, or billing information. All boiler fuel calculators, weapon DPS simulators, and code utilities run client-side in your local browser.
+              Dead Rails Wiki does not require account creation or registration. We will <strong className="text-white">NEVER</strong> request your Roblox username, password, session cookies, or billing information. All calculators and code utilities run client-side in your local browser.
             </p>
           </section>
 

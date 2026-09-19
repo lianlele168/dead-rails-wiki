@@ -4,25 +4,26 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FuelCalculator from '@/components/FuelCalculator';
 import AuthorCard from '@/components/AuthorCard';
-import { Flame, ShieldAlert, Cpu, CheckCircle, Calculator as CalcIcon, HelpCircle } from 'lucide-react';
+import { Flame, CheckCircle, Coins, Calculator as CalcIcon, HelpCircle } from 'lucide-react';
+import { DATA_VERIFIED_DATE, FUEL_FACTS } from '@/data/wikiData';
 
 export const metadata = {
-  title: 'Dead Rails Calculator | Train Fuel, Weight & Cargo Logistics Tool',
-  description: 'Interactive train fuel and logistics calculator for Roblox Dead Rails. Calculate coal and oil consumption based on engine tier, armor weight, speed, and outpost distance.',
+  title: 'Dead Rails Calculator | Coal Per Checkpoint & Run Length Planner',
+  description: 'Interactive coal calculator for Roblox Dead Rails. Compute coal needed per 10 km checkpoint segment for any run length, with the verified Conductor discount and free fuel alternatives.',
 };
 
 const CALCULATOR_FAQS = [
   {
-    question: 'How do I calculate fuel needs for long outpost journeys in Dead Rails?',
-    answer: 'Fuel consumption equals Base Engine Burn Rate multiplied by your Weight Factor (1 + 0.04 per ton of armor) and Speed Curve exponent. Input your current train build into our calculator above to obtain exact coal stack requirements.',
+    question: 'How much coal does a full 80 km run need in Dead Rails?',
+    answer: `A full 80 km run has eight 10 km checkpoint segments at roughly ${FUEL_FACTS.coalPerSegment} coal each — about 20 coal if you rely on coal alone, or 16 with the Conductor class. Newspapers, scrap, and corpses you loot along the way offset most of that.`,
   },
   {
-    question: 'What is the most fuel-efficient cruising speed?',
-    answer: 'Maintaining 50 to 55 km/h provides the highest mileage per coal piece. Running above 70 km/h triggers non-linear boiler overheat drain, burning fuel twice as fast.',
+    question: 'Is coal the only fuel for the train?',
+    answer: 'No. Coal is the baseline fuel, but newspapers, scrap, and the corpses of enemies and animals also fuel the train for free. Corpses can instead be sold to the Sheriff for cash, so decide per corpse: fuel or money.',
   },
   {
-    question: 'Should I prioritize Coal or Oil Drums for Outpost 5+?',
-    answer: 'Oil drums provide 3x the energy density of standard coal stacks and generate less boiler slag. For runs extending past Outpost 4, dedicate at least 3 cargo slots strictly to refined oil drums.',
+    question: 'Which class helps most with fuel?',
+    answer: 'The Conductor burns 2 coal per 10 km segment instead of ~2.5 — over an 80 km run that saves roughly 4 coal. Community tier lists rank Conductor near the top for good reason.',
   },
 ];
 
@@ -39,7 +40,7 @@ export default function CalculatorPage() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebApplication',
-              name: 'Dead Rails Train Fuel & Logistics Calculator',
+              name: 'Dead Rails Coal & Fuel Calculator',
               applicationCategory: 'GameApplication',
               operatingSystem: 'All',
               offers: {
@@ -56,11 +57,10 @@ export default function CalculatorPage() {
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'FAQPage',
-
               author: {
                 '@type': 'Person',
-                name: 'Garrison "Cinders" Vance',
-                jobTitle: 'Lead Locomotive Engineer & Zombie Horde Specialist',
+                name: 'Marcus "Cinders" Vance',
+                jobTitle: 'Dead Rails Wiki Editor & Guide Author',
               },
               mainEntity: CALCULATOR_FAQS.map((faq) => ({
                 '@type': 'Question',
@@ -76,13 +76,13 @@ export default function CalculatorPage() {
 
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono">
-            <CalcIcon className="w-3.5 h-3.5" /> Interactive Locomotive Tool
+            <CalcIcon className="w-3.5 h-3.5" /> Interactive Run Planner
           </div>
           <h1 className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-slate-100 uppercase">
-            Dead Rails Train Fuel & Logistics Calculator
+            Dead Rails Coal &amp; Checkpoint Calculator
           </h1>
           <p className="text-slate-400 text-sm max-w-3xl">
-            Simulate boiler fuel consumption, calculate maximum safe traveling distance between stations, and balance cargo weight against steam drain before departing the safety of the perimeter fence.
+            Plan any run length from 10 km to the full 80 km. The calculator applies the verified coal rate per 10 km checkpoint segment, including the Conductor discount, and reminds you of the free fuel sources along the tracks. Data verified {DATA_VERIFIED_DATE}.
           </p>
         </div>
 
@@ -90,37 +90,37 @@ export default function CalculatorPage() {
 
         <FuelCalculator />
 
-        {/* MATH & LOGISTICS EXPLANATION */}
+        {/* MECHANICS EXPLANATION */}
         <section className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
           <h2 className="text-xl font-bold font-mono text-amber-400 uppercase flex items-center gap-2">
-            <Cpu className="w-5 h-5" /> How Fuel Physics Work in Dead Rails
+            <CheckCircle className="w-5 h-5" /> The Math Behind the Calculator
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
             <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
               <h3 className="text-slate-200 font-bold flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-emerald-400" /> Speed Drag Multiplier
+                <CheckCircle className="w-4 h-4 text-emerald-400" /> Checkpoint Segments
               </h3>
               <p className="text-slate-400 font-sans text-xs">
-                Boiler consumption escalates rapidly beyond 60 km/h. Cruising between 50-60 km/h yields maximum kilometer distance per fuel unit.
+                The 80 km route is divided into 10 km stretches, each ending at a fortified town checkpoint where you can resupply, heal and refuel. Total coal = segments × {FUEL_FACTS.coalPerSegment}.
               </p>
             </div>
 
             <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
               <h3 className="text-slate-200 font-bold flex items-center gap-1.5">
-                <ShieldAlert className="w-4 h-4 text-amber-400" /> Armor Weight Penalty
+                <Coins className="w-4 h-4 text-amber-400" /> Conductor Discount
               </h3>
               <p className="text-slate-400 font-sans text-xs">
-                Heavy Iron Plating and Spiked Cowcatchers add up to +6.5 tons of dead weight. Every additional ton increases baseline boiler burn by 4%.
+                The Conductor class drops the cost to {FUEL_FACTS.coalPerSegmentConductor} coal per segment — a ~20% fuel saving that compounds over a full run.
               </p>
             </div>
 
             <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
               <h3 className="text-slate-200 font-bold flex items-center gap-1.5">
-                <Flame className="w-4 h-4 text-rose-400" /> Overheat Risk
+                <Flame className="w-4 h-4 text-rose-400" /> Fuel Economy Tradeoff
               </h3>
               <p className="text-slate-400 font-sans text-xs">
-                Sustained travel above 90°C risks boiler rupture. Always carry water buckets or slow down during volcanic ash zones.
+                Every corpse is either free fuel or Sheriff cash. Early in the run, burn corpses to save coal; near the end, sell them and spend the money on supplies instead.
               </p>
             </div>
           </div>
@@ -139,6 +139,9 @@ export default function CalculatorPage() {
               </div>
             ))}
           </div>
+          <p className="text-xs text-slate-500">
+            Need the enemy spawn table too? See the <Link href="/zombies-guide" className="text-amber-400 hover:underline font-mono">enemy bestiary</Link>.
+          </p>
         </section>
       </main>
 
