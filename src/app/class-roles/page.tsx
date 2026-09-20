@@ -7,7 +7,7 @@ import { UserCheck, Info } from 'lucide-react';
 
 export const metadata = {
   title: 'Dead Rails Classes Guide | Tier List Picks & First Purchases',
-  description: 'Verified Dead Rails class roster: Werewolf, Vampire, Conductor, Zombie, Cowboy, Survivalist, Doctor and Hunter — community tier list picks, best first purchases, and how to buy classes with Bonds.',
+  description: 'Dead Rails class roster: Werewolf, Vampire, Conductor, Zombie, Cowboy, Survivalist, Doctor and Hunter — community tier list picks, best first purchases, and how to buy classes with Bonds.',
   alternates: {
     canonical: 'https://deadrails.robloxwikihub.com/class-roles',
   },
@@ -30,7 +30,7 @@ export default function ClassRolesPage() {
             Classes are bought with Bonds at the Tailor shop in the Lobby and grant special items or abilities. Community tier lists (Destructoid, Beebom) put Werewolf, Vampire, Conductor, Zombie and Cowboy near the top; for a first purchase, Survivalist or Doctor is the usual recommendation. Perk details we could not verify from public sources are marked as such.
           </p>
           <p className="text-xs text-slate-500 font-mono">
-            Data verified {DATA_VERIFIED_DATE} against{' '}
+            Data last checked {DATA_VERIFIED_DATE} against{' '}
             {DATA_SOURCES.map((s, i) => (
               <span key={s.url}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:underline">{s.name}</a>

@@ -82,7 +82,7 @@ export default function CalculatorPage() {
             Dead Rails Coal &amp; Checkpoint Calculator
           </h1>
           <p className="text-slate-400 text-sm max-w-3xl">
-            Plan any run length from 10 km to the full 80 km. The calculator applies the verified coal rate per 10 km checkpoint segment, including the Conductor discount, and reminds you of the free fuel sources along the tracks. Data verified {DATA_VERIFIED_DATE}.
+            Plan any run length from 10 km to the full 80 km. The calculator applies the verified coal rate per 10 km checkpoint segment, including the Conductor discount, and reminds you of the free fuel sources along the tracks. Data last checked {DATA_VERIFIED_DATE}.
           </p>
         </div>
 

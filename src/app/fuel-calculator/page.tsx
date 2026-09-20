@@ -22,13 +22,13 @@ export default function FuelCalculatorPage() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono">
-            <Flame className="w-3.5 h-3.5" /> Verified Fuel Mechanic
+            <Flame className="w-3.5 h-3.5" /> Fuel Mechanic
           </div>
           <h1 className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-slate-100 uppercase">
             Dead Rails Coal &amp; Fuel Calculator
           </h1>
           <p className="text-slate-400 text-sm max-w-3xl">
-            Never stall the train mid-route. This calculator uses the verified coal consumption rate — about 2.5 coal per 10 km checkpoint segment of the 80 km run, or 2 with the Conductor class — and compares it against the free fuel you can loot along the tracks. Data verified {DATA_VERIFIED_DATE}.
+            Never stall the train mid-route. This calculator uses the verified coal consumption rate — about 2.5 coal per 10 km checkpoint segment of the 80 km run, or 2 with the Conductor class — and compares it against the free fuel you can loot along the tracks. Data last checked {DATA_VERIFIED_DATE}.
           </p>
         </div>
 

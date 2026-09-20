@@ -20,7 +20,7 @@ export default function WeaponsTierListPage() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono">
-            <Crosshair className="w-3.5 h-3.5" /> Verified Combat Guide
+            <Crosshair className="w-3.5 h-3.5" /> Combat Guide
           </div>
           <h1 className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-slate-100 uppercase">
             Dead Rails Weapons Guide

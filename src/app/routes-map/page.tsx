@@ -7,7 +7,7 @@ import { MapPin, AlertTriangle, Gift } from 'lucide-react';
 
 export const metadata = {
   title: 'Dead Rails Map Guide | 80 km Route, Checkpoints & Unique Locations',
-  description: 'Verified Dead Rails route map: an 80 km run with fortified town checkpoints every 10 km, plus Fort Constitution, Tesla Lab, Sterling Mines and Stillwater — spawn distances, enemies and loot.',
+  description: 'Dead Rails route map: an 80 km run with fortified town checkpoints every 10 km, plus Fort Constitution, Tesla Lab, Sterling Mines and Stillwater — spawn distances, enemies and loot.',
   alternates: {
     canonical: 'https://deadrails.robloxwikihub.com/routes-map',
   },
@@ -29,7 +29,7 @@ export default function RoutesMapPage() {
           <p className="text-slate-400 text-sm max-w-3xl">
             Dead Rails is not a wave-based level game: you drive a train along an ~80 km railway, and landmarks spawn by kilometre. Fortified town checkpoints appear roughly every 10 km for resupply and healing, while four unique locations — Fort Constitution, Tesla Lab, Sterling Mines and Stillwater — appear at random each run, so exact distances vary slightly between sources.
           </p>
-          <p className="text-xs text-slate-500 font-mono">Data verified {DATA_VERIFIED_DATE} against deadrails.fandom.com &amp; community guides.</p>
+          <p className="text-xs text-slate-500 font-mono">Data last checked {DATA_VERIFIED_DATE} against deadrails.fandom.com &amp; community guides.</p>
         </div>
 
         <div className="space-y-4 font-mono">

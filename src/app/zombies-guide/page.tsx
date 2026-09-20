@@ -7,7 +7,7 @@ import { ShieldAlert, Skull, Crosshair, Info } from 'lucide-react';
 
 export const metadata = {
   title: 'Dead Rails Enemy Bestiary | Zombies, Vampires, Werewolves & More',
-  description: 'Verified enemy bestiary for Roblox Dead Rails: Normal Zombie, Runner Zombie, Zombie Soldier, Captain Prescott, Vampire, Werewolf, Outlaw, Wolf and Skeleton — with spawn conditions and counter tactics.',
+  description: 'Enemy bestiary for Roblox Dead Rails: Normal Zombie, Runner Zombie, Zombie Soldier, Captain Prescott, Vampire, Werewolf, Outlaw, Wolf and Skeleton — with spawn conditions and counter tactics.',
   alternates: {
     canonical: 'https://deadrails.robloxwikihub.com/zombies-guide',
   },
@@ -21,7 +21,7 @@ export default function ZombiesGuidePage() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono">
-            <Skull className="w-3.5 h-3.5" /> Verified Enemy Bestiary
+            <Skull className="w-3.5 h-3.5" /> Enemy Bestiary
           </div>
           <h1 className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-slate-100 uppercase">
             Dead Rails Enemy Bestiary &amp; Counter Guide
@@ -30,7 +30,7 @@ export default function ZombiesGuidePage() {
             Every hostile entity confirmed in Dead Rails: Normal Zombies, Runner Zombies, Zombie Soldiers, Captain Prescott, Vampires, Werewolves, Outlaws, Wolves and Skeletons. Exact HP values are not yet documented in public sources, so fields we could not verify are marked as such.
           </p>
           <p className="text-xs text-slate-500 font-mono">
-            Data verified {DATA_VERIFIED_DATE} against{' '}
+            Data last checked {DATA_VERIFIED_DATE} against{' '}
             {DATA_SOURCES.map((s, i) => (
               <span key={s.url}>
                 <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-amber-400 hover:underline">{s.name}</a>

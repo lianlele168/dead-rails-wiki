@@ -16,7 +16,7 @@ export default function CodesPage() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-            <Gift className="w-3.5 h-3.5" /> Verified Codes Only
+            <Gift className="w-3.5 h-3.5" /> Codes Only
           </div>
           <h1 className="text-3xl sm:text-4xl font-black font-mono tracking-tight text-slate-100 uppercase">
             Roblox Dead Rails Redeem Codes
@@ -50,7 +50,7 @@ export default function CodesPage() {
                   <div className="flex items-center gap-2">
                     <strong className="text-lg text-emerald-300 font-bold tracking-wider">{item.code}</strong>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">
-                      VERIFIED
+                      SOURCED
                     </span>
                   </div>
                   <p className="text-xs text-slate-300 font-sans">{item.reward}</p>

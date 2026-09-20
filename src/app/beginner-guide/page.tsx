@@ -9,7 +9,7 @@ import { FUEL_FACTS, DATA_VERIFIED_DATE, DATA_SOURCES } from '@/data/wikiData';
 
 export const metadata = {
   title: 'Dead Rails Beginner Guide | First Run Survival, Fuel & Weapon Basics',
-  description: 'Verified beginner guide for Roblox Dead Rails: buy starting coal, survive Runner Zombie nights and Blood/Full Moon events, use melee safely, loot checkpoints, and spend Bonds on the right first class.',
+  description: 'Beginner guide for Roblox Dead Rails: buy starting coal, survive Runner Zombie nights and Blood/Full Moon events, use melee safely, loot checkpoints, and spend Bonds on the right first class.',
 };
 
 const BEGINNER_FAQS = [
@@ -69,7 +69,7 @@ export default function BeginnerGuidePage() {
             Dead Rails Beginner Guide: Your First 80 km Run
           </h1>
           <p className="text-slate-400 text-sm max-w-3xl leading-relaxed">
-            Dead Rails drops you on a train bound for an ~80 km terminal, with fortified town checkpoints every 10 km and randomly generated landmarks in between. This guide covers the verified basics: fuel, weapons, night events, and spending your first Bonds. Data verified {DATA_VERIFIED_DATE}.
+            Dead Rails drops you on a train bound for an ~80 km terminal, with fortified town checkpoints every 10 km and randomly generated landmarks in between. This guide covers the verified basics: fuel, weapons, night events, and spending your first Bonds. Data last checked {DATA_VERIFIED_DATE}.
           </p>
           <p className="text-xs text-slate-500 font-mono">
             Sources:{' '}

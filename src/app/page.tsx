@@ -11,7 +11,7 @@ import { Flame, Crosshair, Gift, MapPin, ArrowRight, Info } from 'lucide-react';
 
 export const metadata = {
   title: 'Dead Rails Wiki | Coal & Fuel Calculator, Enemy Bestiary & 80 km Route Map',
-  description: 'Verified Roblox Dead Rails wiki: coal and fuel calculator (2.5 coal per 10 km checkpoint), enemy bestiary (Vampires, Werewolves, Zombies), 80 km route map with Fort Constitution, Tesla Lab, Sterling and Stillwater.',
+  description: 'Roblox Dead Rails wiki: coal and fuel calculator (2.5 coal per 10 km checkpoint), enemy bestiary (Vampires, Werewolves, Zombies), 80 km route map with Fort Constitution, Tesla Lab, Sterling and Stillwater.',
   keywords: ['Dead Rails Wiki', 'Roblox Dead Rails', 'Dead Rails fuel calculator', 'Dead Rails enemies', 'Dead Rails map', 'Dead Rails classes', 'Dead Rails guide'],
   alternates: {
     canonical: 'https://deadrails.robloxwikihub.com',
@@ -70,7 +70,7 @@ export default function HomePage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono">
                 <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                Verified Data — Last Checked {DATA_VERIFIED_DATE}
+                Sourced Data — Last Checked {DATA_VERIFIED_DATE}
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-black font-mono tracking-tight uppercase leading-tight text-white">
@@ -110,7 +110,7 @@ export default function HomePage() {
                 <span className="text-[10px] text-slate-500">2 with Conductor</span>
               </div>
               <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 space-y-1">
-                <span className="text-[10px] text-slate-400 uppercase">Verified Enemies</span>
+                <span className="text-[10px] text-slate-400 uppercase">Enemies</span>
                 <strong className="text-2xl text-red-400 block font-black">{ENEMIES.length}</strong>
                 <span className="text-[10px] text-slate-500">incl. Vampire &amp; Werewolf</span>
               </div>
@@ -174,7 +174,7 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-2xl font-bold font-mono uppercase text-slate-100 flex items-center gap-2">
-                <Crosshair className="w-6 h-6 text-red-400" /> Verified Enemy Bestiary
+                <Crosshair className="w-6 h-6 text-red-400" /> Enemy Bestiary
               </h2>
               <p className="text-xs text-slate-400 font-sans mt-1">Night events change the spawn table: Blood Moons bring Vampires, Full Moons bring Werewolves.</p>
             </div>
@@ -233,7 +233,7 @@ export default function HomePage() {
                   <Gift className="w-6 h-6" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold font-mono text-slate-100 uppercase">Verified Redeem Codes</h2>
+                  <h2 className="text-xl font-bold font-mono text-slate-100 uppercase">Redeem Codes</h2>
                   <p className="text-xs text-slate-400 font-sans">Claim free in-game rewards.</p>
                 </div>
               </div>
