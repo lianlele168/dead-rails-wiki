@@ -46,8 +46,8 @@ export default function BeginnerGuidePage() {
               '@type': 'FAQPage',
               author: {
                 '@type': 'Person',
-                name: 'Marcus "Cinders" Vance',
-                jobTitle: 'Dead Rails Wiki Editor & Guide Author',
+                name: 'Hlele',
+                jobTitle: 'Editor',
               },
               mainEntity: BEGINNER_FAQS.map((faq) => ({
                 '@type': 'Question',

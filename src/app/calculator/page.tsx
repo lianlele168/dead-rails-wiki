@@ -59,8 +59,8 @@ export default function CalculatorPage() {
               '@type': 'FAQPage',
               author: {
                 '@type': 'Person',
-                name: 'Marcus "Cinders" Vance',
-                jobTitle: 'Dead Rails Wiki Editor & Guide Author',
+                name: 'Hlele',
+                jobTitle: 'Editor',
               },
               mainEntity: CALCULATOR_FAQS.map((faq) => ({
                 '@type': 'Question',
