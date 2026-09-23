@@ -9,7 +9,9 @@ import { DATA_VERIFIED_DATE, FUEL_FACTS } from '@/data/wikiData';
 
 export const metadata = {
   title: 'Dead Rails Calculator | Coal Per Checkpoint & Run Length Planner',
-  description: 'Interactive coal calculator for Roblox Dead Rails. Compute coal needed per 10 km checkpoint segment for any run length, with the verified Conductor discount and free fuel alternatives.',
+  description: 'Interactive coal calculator for Roblox Dead Rails. Compute coal needed per 10 km checkpoint segment for any run length, with the verified Conductor discount and free fuel alternatives.',  alternates: {
+    canonical: '/calculator',
+  },
 };
 
 const CALCULATOR_FAQS = [

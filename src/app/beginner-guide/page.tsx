@@ -9,7 +9,9 @@ import { FUEL_FACTS, DATA_VERIFIED_DATE, DATA_SOURCES } from '@/data/wikiData';
 
 export const metadata = {
   title: 'Dead Rails Beginner Guide | First Run Survival, Fuel & Weapon Basics',
-  description: 'Beginner guide for Roblox Dead Rails: buy starting coal, survive Runner Zombie nights and Blood/Full Moon events, use melee safely, loot checkpoints, and spend Bonds on the right first class.',
+  description: 'Beginner guide for Roblox Dead Rails: buy starting coal, survive Runner Zombie nights and Blood/Full Moon events, use melee safely, loot checkpoints, and spend Bonds on the right first class.',  alternates: {
+    canonical: '/beginner-guide',
+  },
 };
 
 const BEGINNER_FAQS = [
